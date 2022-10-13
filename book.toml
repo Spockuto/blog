@@ -1,0 +1,13 @@
+[book]
+authors = ["Spockuto"]
+language = "en"
+multilingual = false
+src = "src"
+title = "log_coffee!"
+
+[output.html]
+mathjax-support = true
+additional-css = ["custom.css"]
+
+[output.html.search]
+limit-results = 15
