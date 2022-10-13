@@ -6,8 +6,13 @@ src = "src"
 title = "log_coffee!"
 
 [output.html]
-mathjax-support = true
+default-theme = "ayu"
+preferred-dark-theme = "ayu"
+mathjax-support = false
+no-section-label = true
 additional-css = ["custom.css"]
+git-repository-url = "https://github.com/Spockuto/blog"
+git-repository-icon = "fa-github"
 
 [output.html.search]
 limit-results = 15
