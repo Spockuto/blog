@@ -98,6 +98,7 @@ Treating the real and imaginary parts of *z *as image coordinates on the complex
 
 ![Mandlebrot Set](https://cdn-images-1.medium.com/max/5720/1*GrXYt3QYs6fIsfd9j-ctzQ.png)
 
+
 Code : [https://github.com/Spockuto/Mandelbrot](https://github.com/Spockuto/Mandelbrot)
 
 Live demo : [https://vsekar.me/Mandelbrot/](https://vsekar.me/Mandelbrot/)

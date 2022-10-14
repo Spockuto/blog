@@ -40,7 +40,7 @@ This gives rise to a structure similar to that of an atom. This protons are the 
 Such an huge amount of negative mass is condensed at the center of the universe. This might give rise to what we can call a
 
 ### Super massive Anti black hole (SMABH)
->  It is not a white hole _/\_
+>  It is not a white hole _/\\_
 
 A single entity with huge amount of anti gravity, which basically does everything opposite to a black hole. It repels everything in existence, including space-time. If space-time is a sphere and a SMABH exists at the center, It could repel everything away explaining why the universe is expanding. It could also explain why the relative distance between two objects increases as the surface area of the space time expands.
 >  But how does it still expand?
