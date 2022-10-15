@@ -2,7 +2,7 @@
 
 I have always been amused by how simple Mathematical rules govern complex fractals and designs. I believe the more we explore, the more closer we get to understand nature. I have listed a few structures I have explored over the years.
 
-### [Kirby Krackle](https://vsekar.me/visualizer/kirbydots/)
+### [Kirby Krackle](https://vsekar.me/kirby/)
 
 Kirby Krackle (also known as Kirby Dots) is an artistic convention in superhero and science fiction comic books and similar illustrations, in which a field of black pseudo-fractal images is used to represent negative space around unspecified kinds of energy. It can be seen used throughout Spider Man - Into the Spider Verse movie to create the illusion of energy.
 

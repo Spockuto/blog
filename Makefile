@@ -1,11 +1,11 @@
 .PHONY: deploy
 deploy: book
 	@echo "====> deploying to github"
-	git worktree add ./build/ gh-pages
+	git worktree add /tmp/build/ gh-pages
 	mdbook build
-	rm -rf ./build/*
-	cp -rp book/* ./build/
-	cd ./build/ && \
+	rm -rf /tmp/build/*
+	cp -rp book/* /tmp/build/
+	cd /tmp/build/ && \
 		git update-ref -d refs/heads/gh-pages && \
 		git add -A && \
 		git commit -m "deployed on $(shell date) by ${USER}" && \
