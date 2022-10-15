@@ -1,0 +1,273 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js ayu">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Hash function Aug 07 2016 - log_coffee!</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../custom.css">
+
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "ayu" : "ayu";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('ayu')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><div>log_coffee!</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter_0/chapter_0.html">Chapter 0</a></li></ol></li><li class="chapter-item expanded "><div>Archive</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../visualizer.html">Visualization 5 Nov 2019</a></li><li class="chapter-item expanded "><a href="../archive/fractals.html">Fractals Aug 31 2018</a></li><li class="chapter-item expanded "><a href="../archive/universe.html">Universe Sep 19 2016</a></li><li class="chapter-item expanded "><a href="../archive/hash.html" class="active">Hash function Aug 07 2016</a></li><li class="chapter-item expanded "><a href="../archive/bbt.html">BBT Jun 25 2016</a></li></ol></li><li class="chapter-item expanded "><a href="../template/template.html">Template</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../template/template-heading.html">Heading</a></li><li class="chapter-item expanded "><a href="../template/template-emphasis.html">Emphasis</a></li><li class="chapter-item expanded "><a href="../template/template-blockquotes.html">Blockquotes</a></li><li class="chapter-item expanded "><a href="../template/template-lists.html">Lists</a></li><li class="chapter-item expanded "><a href="../template/template-latex.html">Latex</a></li><li class="chapter-item expanded "><a href="../template/template-code.html">Codes</a></li><li class="chapter-item expanded "><a href="../template/template-tables.html">Tables</a></li><li class="chapter-item expanded "><a href="../template/template-links.html">Links</a></li><li class="chapter-item expanded "><a href="../template/template-images.html">Images</a></li><li class="chapter-item expanded "><a href="../template/template-footnote.html">Footnotes</a></li><li class="chapter-item expanded "><a href="../template/template-tasklists.html">Task lists</a></li><li class="chapter-item expanded "><a href="../template/template-blog.html">Blog Specific</a></li></ol></li><li class="chapter-item expanded "><a href="../keys.html">Keys</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu (default)</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">log_coffee!</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/Spockuto/blog" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <p><img src="https://cdn-images-1.medium.com/max/2000/1*KvnXSdcocOy8tpxGbLUCnw.jpeg" alt="" /></p>
+<h1 id="choosing-a-good-hash-function"><a class="header" href="#choosing-a-good-hash-function">Choosing a good hash function</a></h1>
+<p>Securing your application is one of the hardest part of the development cycle. There are a lot of security aspects one has to look far ahead and variety of tools are available to solve each issue. But choosing the right tool is always a hardship. Specifically when it comes to encryption or hashing.</p>
+<h3 id="passwords"><a class="header" href="#passwords">Passwords</a></h3>
+<p>Hashing passwords is the best way of storing passwords in database. But it is’t that simple. If your database is compromised and you have just hashed the password, they could easily look for matching hashes by constructing a Rainbow table with commonly used passwords.</p>
+<h3 id="salt"><a class="header" href="#salt">Salt</a></h3>
+<p>To solve this problem, every password is concatenated with a random string called the <em>SALT</em> and then the string is hashed. The salt is stored in the database and used when we have to authenticate the user. This increases the security exponentially as there won’t be any common hashes and finding a correlation between the salt and hash is practically impossible.</p>
+<p>However choosing the right hash algorithm is difficult. People always use the obvious choice <em><strong>SHA1/2/3</strong></em> which is completely wrong. SHA is constructed mainly to be fast making them suitable for large files. They have a speed of 12–15 <em><strong>cpb</strong></em> and hence bruteforce is highly possible. A more preferable algorithm for hashing is <strong>pbkdf2-hmac</strong> which repeatedly uses SHA on the logic of a <strong>PRNG</strong>. These algorithms are relatively slower that SHA and hence takes bruteforce out of the table.</p>
+<h3 id="files"><a class="header" href="#files">Files</a></h3>
+<p>The SHA algorithm is specifically designed for acting as a digital signature to large files. The SHA1/2/3 algorithms are designed by group of cryptologists who compete in the competition organized by <strong>NIST</strong>. These competitions are conducted when a collision is detected in the previous SHA. Before SHA, Message Digest was “THE” secure algorithm. Nowadays people barely use it because of too many collisions.</p>
+<p>Every software is provided with a hash which helps us to verify the authenticity of the file. However this can only help us identify if the file was damaged during the download. If someone was able to hack into the website and modify the software, it’s doesn’t take much time to modify the hash too. Hence there isn’t a completely secure way to check the authenticity of the file.</p>
+<p>The main factor which comes with hashing large files is speed. SHA2 provides a speed of 208mbps. However this can be further improved. A tree based hash structure is constructed which improves security as well as speed by utilizing the multi-core system. Merkel tree is widely used nowadays. The present SHA3 provides us with Sakura method for a tree based hash construction. These are much faster than previous algorithm and hence large files can be hashed easily.</p>
+<h3 id="data-encryption"><a class="header" href="#data-encryption">Data encryption</a></h3>
+<p>The data encryption is used to encrypt files when transferred over unsecure networks so that even if the file is retrieved they couldn’t be accessed. The algorithms use for this purpose are <strong>DES</strong> and <strong>AES</strong> which work on a key based encryption. However software gaints develop their own encryption algorithm which provides even more security as the algorithm isnt exposed. One such example is how YouTube URL is produced from just the Video’s title (or maybe more :P)</p>
+<h3 id="key-exchange"><a class="header" href="#key-exchange">Key Exchange</a></h3>
+<p>There are times when we need to transfer to a short information but must be highly secure. This is established by <strong>RSA</strong>. RSA was one of the primitive algorithms which uses key based encryption to transfer data. Key based algorithm are of two types</p>
+<ul>
+<li>
+<p>Symmetrical (public)</p>
+</li>
+<li>
+<p>Asymmetrical(public/private)</p>
+</li>
+</ul>
+<p>DES and AES are of symmetrical types. RSA is an asymmetric algorithm. It uses public key to encrypt which can be decrypted only by the private key. These algorithms are slow and hence used only on very short information.</p>
+<p>Modern day money is Bitcoin. They use a further complicated algorithm called <strong>ECDSA</strong> which is widely used nowadays.</p>
+<p>This is just an outline of where hashes and encryption are used frequently. Some algorithms like Blowfish, bcrypt, BLAKE2 haven’t been mentioned here but at specific constraints, others don’t stand a chance against these methods.</p>
+<h2 id="may-the-security-be-with-you"><a class="header" href="#may-the-security-be-with-you">May the security be with you.</a></h2>
+<ul>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/SHA-1?wprov=sfla1">SHA</a> — Secure Hash Algorithm</p>
+</li>
+<li>
+<p>CPB — cycles per byte.</p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/PBKDF2?wprov=sfla1">PBKDF2-HMAC</a> — Password-Based Key Derivation Function — Hash Message Authentication Code</p>
+</li>
+<li>
+<p>PRNG — Pseudo Random Number Generator</p>
+</li>
+<li>
+<p>NIST — National Institute of standards and technology</p>
+</li>
+<li>
+<p>DES — Data Encryption Standard</p>
+</li>
+<li>
+<p>AES — Advanced Encryption Standard</p>
+</li>
+<li>
+<p>RSA — Rivest,Shamir,Adleman</p>
+</li>
+<li>
+<p>ECDSA — Elliptic Curve Digital Signature Algorithm</p>
+</li>
+</ul>
+<p>Useful Links.</p>
+<ul>
+<li>
+<p><a href="http://security.stackexchange.com/questions/16354/whats-the-advantage-of-using-pbkdf2-vs-sha256-to-generate-an-aes-encryption-key">http://security.stackexchange.com/questions/16354/whats-the-advantage-of-using-pbkdf2-vs-sha256-to-generate-an-aes-encryption-key</a></p>
+</li>
+<li>
+<p><a href="https://www.addedbytes.com/blog/why-you-should-always-salt-your-hashes/">https://www.addedbytes.com/blog/why-you-should-always-salt-your-hashes/</a></p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Advanced_Encryption_Standard?wprov=sfla1">https://en.wikipedia.org/wiki/Advanced_Encryption_Standard?wprov=sfla1</a></p>
+</li>
+<li>
+<p><a href="https://en.bitcoin.it/wiki/Elliptic_Curve_Digital_Signature_Algorithm">https://en.bitcoin.it/wiki/Elliptic_Curve_Digital_Signature_Algorithm</a></p>
+</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../archive/universe.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../archive/bbt.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../archive/universe.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../archive/bbt.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>
