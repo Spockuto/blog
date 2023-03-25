@@ -1,7 +1,7 @@
 # log_coffee!
 
 - [log_coffee!]()
-    + [Chapter 0](./chapter_0/chapter_0.md)
+    + [Lindenmayer systems](./chapter_0/chapter_0.md)
 - [Archive]()
     + [Visualization 5 Nov 2019](./visualizer.md)
     + [Fractals Aug 31 2018](./archive/fractals.md)
