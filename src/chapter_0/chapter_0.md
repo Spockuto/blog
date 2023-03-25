@@ -9,7 +9,7 @@ Website - [vsekar.me/LSystems/](https://vsekar.me/LSystems/)
 Repository - [github.com/Spockuto/LSystems/](https://github.com/Spockuto/LSystems/)
 
 Now let's explore how an axiom, a set of rules and an angle can be developed into this beautiful fern
-![Barnsley Fern](../images/barnsley_fern.png)
+![Barnsley Fern](https://raw.githubusercontent.com/Spockuto/blog/master/src/images/barnsley_fern.png)
 
 ### Step 0 - Define the LSystem
 For Barnsley Fern, the LSystem is defined as follows
@@ -146,12 +146,12 @@ for seq in sequence.chars() {
 | Iterations |Barnsley Fern |
 | ---------- | ------- |
 | 1 | `None` |
-| 2 | ![Barnsley Fern 2](../images/b_fern_2.png)|
-| 3 | ![Barnsley Fern 3](../images/b_fern_3.png)|
-| 4 | ![Barnsley Fern 4](../images/b_fern_4.png)|
-| 5 | ![Barnsley Fern 5](../images/b_fern_5.png)|
+| 2 | ![Barnsley Fern 2](https://raw.githubusercontent.com/Spockuto/blog/master/src/images/b_fern_2.png)|
+| 3 | ![Barnsley Fern 3](https://raw.githubusercontent.com/Spockuto/blog/master/src/images/b_fern_3.png)|
+| 4 | ![Barnsley Fern 4](https://raw.githubusercontent.com/Spockuto/blog/master/src/images/b_fern_4.png)|
+| 5 | ![Barnsley Fern 5](https://raw.githubusercontent.com/Spockuto/blog/master/src/images/b_fern_5.png)|
 |...| ...|
-| 8 | ![Barnsley Fern 8](../images/b_fern_8.png)|
+| 8 | ![Barnsley Fern 8](https://raw.githubusercontent.com/Spockuto/blog/master/src/images/b_fern_8.png)|
 
 ### Step 3 - Color the canvas using a linear gradient
 
@@ -199,7 +199,7 @@ let image_data = web_sys::ImageData::new_with_u8_clamped_array_and_sh(
 context.put_image_data(&image_data, 0.0, 0.0).unwrap();
 ```
 With this, a linear gradient between `#C6EA8D` and `#FE90AF` gives us
-![Barnsley Fern](../images/barnsley_fern.png)
+![Barnsley Fern](https://raw.githubusercontent.com/Spockuto/blog/master/src/images/barnsley_fern.png)
 
 > Note: Colors don't exactly behave well with linear interpolation. For more details check out [The Secrets of Colour Interpolation](https://www.alanzucconi.com/2016/01/06/colour-interpolation/)
 
@@ -212,7 +212,7 @@ Rules :
 Angle : 22.5
 ```
 
-![Fractal Tree](../images/fractal_tree.png)
+![Fractal Tree](https://raw.githubusercontent.com/Spockuto/blog/master/src/images/fractal_tree.png)
 
 ## Fractal Tree 2
 
@@ -228,7 +228,7 @@ Rules :
 Angle : 18
 ```
 
-![Fractal Tree 2](../images/fractal_tree_2.png)
+![Fractal Tree 2](https://raw.githubusercontent.com/Spockuto/blog/master/src/images/fractal_tree_2.png)
 
 ## Dragon Curve
 
@@ -240,7 +240,7 @@ Rules :
 Angle : 90
 ```
 
-![Dragon Curve](../images/dragon_curve.png)
+![Dragon Curve](https://raw.githubusercontent.com/Spockuto/blog/master/src/images/dragon_curve.png)
 
 ## 32 Segment Curve
 
@@ -251,7 +251,7 @@ Rules :
 Angle : 90
 ```
 
-![32 Segment Curve](../images/32_segment.png)
+![32 Segment Curve](https://raw.githubusercontent.com/Spockuto/blog/master/src/images/32_segment.png)
 
 ## Peano Gosper Curve
 
@@ -263,7 +263,7 @@ Rules :
 Angle : 60
 ```
 
-![Peano Gosper Curve](../images/peano_gosper.png)
+![Peano Gosper Curve](https://raw.githubusercontent.com/Spockuto/blog/master/src/images/peano_gosper.png)
 
 ## Koch Snowflake
 
@@ -274,7 +274,7 @@ Rules :
 Angle : 60
 ```
 
-![Koch Snowflake](../images/koch_snowflake.png)
+![Koch Snowflake](https://raw.githubusercontent.com/Spockuto/blog/master/src/images/koch_snowflake.png)
 
 ## Koch Snowflake 2
 
@@ -285,7 +285,7 @@ Rules :
 Angle : 60
 ```
 
-![Koch Snowflake 2](../images/koch_snowflake_2.png)
+![Koch Snowflake 2](https://raw.githubusercontent.com/Spockuto/blog/master/src/images/koch_snowflake_2.png)
 
 ## Koch Snowflake 3
 
@@ -296,7 +296,7 @@ Rules :
 Angle : 85
 ```
 
-![Koch Snowflake 3](../images/koch_snowflake_3.png)
+![Koch Snowflake 3](https://raw.githubusercontent.com/Spockuto/blog/master/src/images/koch_snowflake_3.png)
 
 ## Quadratic Koch Island
 
@@ -307,7 +307,7 @@ Rules :
 Angle : 90
 ```
 
-![quad. Koch Island](../images/quad_koch_island.png)
+![quad. Koch Island](https://raw.githubusercontent.com/Spockuto/blog/master/src/images/quad_koch_island.png)
 
 ## Quadratic Koch Island 2
 
@@ -318,7 +318,7 @@ Rules :
 Angle : 90
 ```
 
-![quad. Koch Island 2](../images/quad_koch_island_2.png)
+![quad. Koch Island 2](https://raw.githubusercontent.com/Spockuto/blog/master/src/images/quad_koch_island_2.png)
 
 ## Islands
 
@@ -330,7 +330,7 @@ Rules :
 Angle : 90
 ```
 
-![Islands](../images/islands.png)
+![Islands](https://raw.githubusercontent.com/Spockuto/blog/master/src/images/islands.png)
 
 ## Islands 2
 
@@ -342,7 +342,7 @@ Rules :
 Angle : 90
 ```
 
-![Islands 2](../images/islands_2.png)
+![Islands 2](https://raw.githubusercontent.com/Spockuto/blog/master/src/images/islands_2.png)
 
 ## Sierpinski Triangle
 
@@ -354,7 +354,7 @@ Rules :
 Angle : 60
 ```
 
-![Sierpinski Triangle](../images/sierpinski_t.png)
+![Sierpinski Triangle](https://raw.githubusercontent.com/Spockuto/blog/master/src/images/sierpinski_t.png)
 
 ## Sierpinski Square
 
@@ -365,7 +365,7 @@ Rules :
 Angle : 90
 ```
 
-![Sierpinski Square](../images/sierpinski_s.png)
+![Sierpinski Square](https://raw.githubusercontent.com/Spockuto/blog/master/src/images/sierpinski_s.png)
 
 ## Hilbert Curve
 
@@ -377,7 +377,7 @@ Rules :
 Angle : 90
 ```
 
-![Hilbert Curve](../images/hilbert.png)
+![Hilbert Curve](https://raw.githubusercontent.com/Spockuto/blog/master/src/images/hilbert.png)
 
 ## Frec Fractal
 
@@ -390,5 +390,5 @@ Rules :
 Angle : 90
 ```
 
-![Frec Fractal](../images/frec_fractal.png)
+![Frec Fractal](https://raw.githubusercontent.com/Spockuto/blog/master/src/images/frec_fractal.png)
 
