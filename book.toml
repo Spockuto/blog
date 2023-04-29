@@ -10,9 +10,14 @@ default-theme = "ayu"
 preferred-dark-theme = "ayu"
 mathjax-support = true
 no-section-label = true
-additional-css = ["custom.css" ]
+additional-css = ["custom.css" , "./theme/catppuccin.css", "./theme/catppuccin-highlight.css"]
 git-repository-url = "https://github.com/Spockuto/blog"
 git-repository-icon = "fa-github"
 
 [output.html.search]
 limit-results = 15
+
+[preprocessor]
+
+[preprocessor.catppuccin]
+assets_version = "0.1.1" # DO NOT EDIT: Managed by `mdbook-catppuccin install`
