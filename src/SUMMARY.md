@@ -1,9 +1,9 @@
 # log_coffee!
 
-- [log_coffee!](./log_coffee/index.md)
+- [log_coffee!](./index.md)
     + [Why u so mean?](./log_coffee/chapter_1.md)
     + [Lindenmayer systems](./log_coffee/chapter_0.md)
-- [Archive](./archive/archive.md)
+- [Archive](./archive.md)
     - [Visualization](./archive/visualizer.md)
     - [Fractals](./archive/fractals.md)
     - [The center of the Universe is not a black hole. Its the opposite](./archive/universe.md)
