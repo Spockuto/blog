@@ -1,6 +1,7 @@
 # log_coffee!
 
 - [log_coffee!](./index.md)
+    + [Sweet Jesus, Pooh! That's Not Honey! - You're Eating Recursion!](./log_coffee/chapter_2.md) ]
     + [Why u so mean?](./log_coffee/chapter_1.md)
     + [Lindenmayer systems](./log_coffee/chapter_0.md)
 - [Archive](./archive.md)
