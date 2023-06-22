@@ -65,7 +65,7 @@ fatal runtime error: stack overflow
 Aborted (core dumped)
 ```
 
-Intially, we immediately suspected the `fmt::Debug` hitting a recursive call and was causing the stack overflow. So, we removed the `println!` from `main` and included a `println!` in `create_nested_tree` before returning to value to isolate the issue. (What's a debugger?)
+Initially, we immediately suspected the `fmt::Debug` hitting a recursive call and was causing the stack overflow. So, we removed the `println!` from `main` and included a `println!` in `create_nested_tree` before returning to value to isolate the issue. (What's a debugger?)
 
 > Note that the function `create_nested_tree` iteratively creates the nested `Tree` and there shouldn't be any concern of stack overflow. 
 
@@ -133,10 +133,10 @@ fn create_nested_tree(_1: i32) -> Tree {
 
 But why would dropping a value cause a stack overflow? If not anything, we are trying to free memory. This is where the beauty of the Rust implementation and my loss of hair kicks in
 
-> When an initialized variable in Rust goes out of scope or a temporary is no longer needed its destructor is run. Assignment also runs the destructor of its left-hand operand, unless it's an unitialized variable. If a struct variable has been partially initialized, only its initialized fields are dropped. The destrutor of a type consists of
+> When an initialized variable in Rust goes out of scope or a temporary is no longer needed its destructor is run. The assignment also runs the destructor of its left-hand operand, unless it's an uninitialized variable. If a struct variable has been partially initialized, only its initialized fields are dropped. The destructor of a type consists of
 > * Calling its std::ops::Drop::drop method, if it has one.
 > * Recursively running the destructor of all of its fields.
->   * The fields of a struct, tuple or enum variant are dropped in declaration order.
+>   * The fields of a struct, tuple, or enum variant are dropped in declaration order.
 >   * The elements of an array or owned slice are dropped from the first element to the last.
 >   * The captured values of a closure are dropped in an unspecified order.
 >   * Trait objects run the destructor of the underlying type.
@@ -144,9 +144,9 @@ But why would dropping a value cause a stack overflow? If not anything, we are t
 
 Source: [Destructors](https://web.mit.edu/rust-lang_v1.25/arch/amd64_ubuntu1404/share/doc/rust/html/reference/destructors.html)
 
-<mark>Following the description of Destructor, since we don't have our own Drop implementation, it tries to drop the values `Leaf` and `SubTree` in the enum. However, the nested nature of the `enum` recursively places drop calls on the stack and hence causess the stack overflow</mark>
+<mark>Following the description of Destructor, since we don't have our Drop implementation, it tries to drop the values `Leaf` and `SubTree` in the enum. However, the nested nature of the `enum` recursively places drop calls on the stack and hence causes the stack overflow</mark>
 
-Finally an explanation, but how do we solve this? By implementing our own `Drop` implementation which isn't recursive in nature.
+Finally an explanation, but how do we solve this? By implementing our own `Drop` implementation which isn't recursive.
 
 ```rust
 impl Drop for Tree {
@@ -166,10 +166,10 @@ impl Drop for Tree {
 }
 ```
 Rough logic behind the code 
-* Create our own stack (ironic) and push the entire tree.
-* Keep poping the values of the stack until its empty
+* Create our stack (ironic) and push the entire tree.
+* Keep popping the values of the stack until its empty
   * If the node is a `Leaf`, you don't need to do anything since Rust can drop it safely.
-  * If  the node is a `SubTree(Vec<Tree>)`, we collect all the subtrees in the vec and push them into the stack. This is achieved by `children.drain(..)`. Now, we have to make `node` safe to drop. Luckily, Rust saves us again here, since it allocates the same amount of memory for each value type in an `enum` and so we can easily replace the value at `node` with a `Tree::Leaf`
+  * If the node is a `SubTree(Vec<Tree>)`, we collect all the subtrees in the vec and push them into the stack. This is achieved by `children.drain(..)`. Now, we have to make `node` safe to drop. Luckily, Rust saves us again here, since it allocates the same amount of memory for each value type in an `enum` and so we can easily replace the value at `node` with a `Tree::Leaf`
 
 Given this, when the stack is empty, all references of `Tree::SubTree` would have been replaced by `Tree::Leaf` and the tree would be safe to drop without any recursion. Or so I thought. 
 
@@ -201,9 +201,9 @@ Now we can implement `Drop` for the wrapper `Head` in the same way and adapt our
 ```rust
 impl Drop for Head {
     fn drop(&mut self) {
-        // we are able to solve the *self issue here
-        // We take advantage of Rust allocating the 
-        // same amout of memory for each value of the 
+        //We can solve the *self issue here
+        // We take advantage of Rust by allocating the 
+        // same amount of memory for each value of the 
         // enum and swap self with `Head(Tree::Leaf)` 
         // which can be dropped.
 

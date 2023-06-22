@@ -6,13 +6,13 @@ For a quadratic equation of the form \\( x^2 + Bx + C = 0\\), the roots of the e
 
 This is the representation everyone is most familiar with and widely used in high school. However, recently another representation has been proposed which offers much more intuition and further simplifies the equation. 
 
-Let the Arithimetic Mean of the roots be \\( M = -B / 2\\). Simplyfying the roots, we have 
+Let the Arithmetic Mean of the roots be \\( M = -B / 2\\). Simplifying the roots, we have 
 \\[\frac{-B \\pm \sqrt{B^2 - 4C}}{2}\\]
 \\[(-B/2) \pm \sqrt{B^2/4 - 4C/4}\\]
 \\[(-B/2) \pm \sqrt{(-B/2)^2 - C}\\]
 \\[M \pm \sqrt{M^2 - C}\\]
 
-This representation for roots is much more simpler, as one needs to just evaluate the mean in the beginning to solve the roots of the equation.
+This representation for roots is much simpler, as one needs to just evaluate the mean in the beginning to solve the roots of the equation.
 
 ## Why?
 Since the roots are equidistant from their mean, let's represent the roots as \\(M + u\\) and \\(M - u\\)
@@ -23,10 +23,10 @@ Hence, product of the roots \\[C = (M + u)(M-u)\\]
 Substituting \\(u\\) in the roots, we have the roots \\(M + \sqrt{M^2 - C}\\) and \\(M - \sqrt{M^2 - C}\\)
 
 
-> An interesting result which is much more obvious this way.
+> An interesting result that is much more obvious this way.
 If the roots are real, then 
 \\[M^2 - C \gt 0\\]
 \\[M \gt \sqrt{C}\\]
-\\[M \gt GM \\] where GM is the geomertric mean of roots given by \\(\sqrt{C}\\)
+\\[M \gt GM \\] where GM is the geometric mean of roots given by \\(\sqrt{C}\\)
 
 Credits to [Po-Shen Loh](https://www.poshenloh.com/) for this improved and intuitive representation.

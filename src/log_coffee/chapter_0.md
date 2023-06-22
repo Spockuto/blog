@@ -1,14 +1,14 @@
 # Lindenmayer systems
 
-A Lindemayer systems or LSystem for short consists of an alphabet of symbols that can be used to make strings, a collection of production that expand each symbol into some larger string of symbols, an initial “axiom” string from which to begin construction, and a mechanism for translating the generated strings into geometric structures.
+A Lindemayer system or LSystem for short consists of an alphabet of symbols that can be used to make strings, a collection of production that expand each symbol into some larger string of symbols, an initial “axiom” string from which to begin construction, and a mechanism for translating the generated strings into geometric structures.
 
-Few years back, I built a rudimentary webiste to extrapolate few known LSystems in pure JS. However, presently I have been getting more comfortable with Rust &#x1F980; and explored rebuilding it with Rust and wasm-bindgen to get better performance for tougher iterations.
+A few years back, I built a rudimentary website to extrapolate a few known LSystems in pure JS. However, presently I have been getting more comfortable with Rust &#x1F980; and explored rebuilding it with Rust and wasm-bindgen to get better performance for tougher iterations.
 
 Website - [vsekar.me/LSystems/](https://vsekar.me/LSystems/)
 
 Repository - [github.com/Spockuto/LSystems/](https://github.com/Spockuto/LSystems/)
 
-Now let's explore how an axiom, a set of rules and an angle can be developed into this beautiful fern
+Now let's explore how an axiom, a set of rules, and an angle can be developed into this beautiful fern
 ![Barnsley Fern](https://raw.githubusercontent.com/Spockuto/blog/master/src/images/barnsley_fern.png)
 
 ### Step 0 - Define the LSystem
@@ -38,20 +38,20 @@ lazy_static! {
 }
 ```
 - *variables* : These are the identifiers that will be considered during building the sequence. Others will be skipped.
-- *axiom* : The intial sequence
+- *axiom* : The initial sequence
 - *rules* : Expansion rules for each identifier
 - *angle* : Explained later
 - *max_rounds* - Implementation detail. Maximum number of supported iterations before running out of heap memory.
 
 ### Step 1 - Generate the sequence
 
-Once the LSystem is defined, we can build the drawing sequence. Iterations defines the amount of rounds the sequence will be expanded using the given rules. Higher the iteration, better defined the picture is.
+Once the LSystem is defined, we can build the drawing sequence. Iterations define the number of rounds the sequence will be expanded using the given rules. The higher the iteration, the better defined the picture is.
 
 ```rust
 /// Generate the Turtle graphics sequence for given iterations
 pub fn expand(&self, iterations: u32) -> String {
 
-    // panic if given iterations is greater than the accepted limit.
+    // panic if given iterations are greater than the accepted limit.
     if iterations > self.0.max_rounds {
         panic!("Max limit reached");
     }
@@ -77,12 +77,12 @@ pub fn expand(&self, iterations: u32) -> String {
                 insert_index += &rule.len();
             }
         }
-        // The current sequence will be used as the generator for next round
+        // The current sequence will be used as the generator for the next round
     }
     sequence
 }
 ```
-> Note: The function above can also be written recursively but for larger iterations you would run out of stack depth way before running out of heap memory.
+> Note: The function above can also be written recursively but for larger iterations, you would run out of stack depth way before running out of heap memory.
 
 For Barnsley Fern, the sequence expands as follows for subsequent iterations
 
@@ -97,8 +97,8 @@ For Barnsley Fern, the sequence expands as follows for subsequent iterations
 Now that the sequence is generated, we can start building the canvas. Each character in the sequence defines a particular set of operations on the canvas. This allows us to convert the sequence into a picture.
 
 ```rust
-// define length
-// set angle to the LSystem angle
+//Define length
+//Set the angle to the LSystem angle
 let angle_rad = -1.0 * PI * angle / 180.0;
 let (mut x, mut y) = (0.0, 0.0);
 let mut stack = vec![];
@@ -132,7 +132,7 @@ for seq in sequence.chars() {
             stack.push(Line { x, y, angle });
         }
         ']' => {
-        // pop a point from stack and move to it.
+        //Pop a point from the stack and move to it.
             let line = stack.pop().unwrap();
             (x, y, angle) = (line.x, line.y, line.angle);
             context.move_to(x, y);
@@ -165,7 +165,7 @@ let image_data = context
 // data contains 4 u8 values per pixel indicating RGBA (red, green, blue, alpha) values
 let mut data = image_data.data();
 
-// set the linear gradient colors : color1 -> color2 
+//Set the linear gradient colors : color1 -> color2 
 
 let c1 = Rgb::from_hex_str(&color1).unwrap();
 let c2 = Rgb::from_hex_str(&color2).unwrap();
