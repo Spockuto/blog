@@ -201,12 +201,12 @@ Now we can implement `Drop` for the wrapper `Head` in the same way and adapt our
 ```rust
 impl Drop for Head {
     fn drop(&mut self) {
-        //We can solve the *self issue here
-        // We take advantage of Rust by allocating the 
-        // same amount of memory for each value of the 
-        // enum and swap self with `Head(Tree::Leaf)` 
-        // which can be dropped.
-
+        // We can solve the *self issue here by taking
+        // advantage of Rust allocating the same
+        // amount of memory for each value of the 
+        // enum and thus swapping self.0 with 
+        // `Head(Tree::Leaf)` allows a safe drop.
+        
         let mut tree = Tree::Leaf;
         std::mem::swap(&mut self.0, &mut tree);
 

@@ -97,8 +97,8 @@ For Barnsley Fern, the sequence expands as follows for subsequent iterations
 Now that the sequence is generated, we can start building the canvas. Each character in the sequence defines a particular set of operations on the canvas. This allows us to convert the sequence into a picture.
 
 ```rust
-//Define length
-//Set the angle to the LSystem angle
+// Define length
+// Set the angle to the LSystem angle
 let angle_rad = -1.0 * PI * angle / 180.0;
 let (mut x, mut y) = (0.0, 0.0);
 let mut stack = vec![];
@@ -132,7 +132,7 @@ for seq in sequence.chars() {
             stack.push(Line { x, y, angle });
         }
         ']' => {
-        //Pop a point from the stack and move to it.
+        // Pop a point from the stack and move to it.
             let line = stack.pop().unwrap();
             (x, y, angle) = (line.x, line.y, line.angle);
             context.move_to(x, y);
@@ -165,7 +165,7 @@ let image_data = context
 // data contains 4 u8 values per pixel indicating RGBA (red, green, blue, alpha) values
 let mut data = image_data.data();
 
-//Set the linear gradient colors : color1 -> color2 
+// Set the linear gradient colors : color1 -> color2 
 
 let c1 = Rgb::from_hex_str(&color1).unwrap();
 let c2 = Rgb::from_hex_str(&color2).unwrap();
