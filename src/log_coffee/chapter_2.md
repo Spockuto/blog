@@ -206,7 +206,7 @@ impl Drop for Head {
         // amount of memory for each value of the 
         // enum and thus swapping self.0 with 
         // `Head(Tree::Leaf)` allows a safe drop.
-        
+
         let mut tree = Tree::Leaf;
         std::mem::swap(&mut self.0, &mut tree);
 
@@ -306,3 +306,53 @@ fn main() {
 }
 ```
 *Fin. Guess I will have some &#x1F980; soup now*
+
+## Update (23/06/2023)
+
+After sitting on it for a while, we can actually do it without a wrapper.
+
+```rust
+#[derive(Debug)]
+enum Tree {
+    Leaf,
+    SubTree(Vec<Tree>),
+}
+
+impl Drop for Tree {
+    fn drop(&mut self) {
+        let mut stack = vec![];
+
+        match self {
+            Tree::Leaf => {}
+            Tree::SubTree(ref mut children) => {
+                stack.extend(children.drain(..));
+
+                while let Some(mut node) = stack.pop() {
+                    match node {
+                        Tree::Leaf => {}
+                        Tree::SubTree(ref mut children) => {
+                            stack.extend(children.drain(..));
+                        }
+                    }
+                    let _ = std::mem::replace(&mut node, Tree::Leaf);
+                }
+            }
+        }
+    }
+}
+
+fn create_nested_tree(depth: i32) -> Tree {
+    let mut tree = Tree::Leaf;
+    for _ in 0..depth {
+        tree = Tree::SubTree(vec![tree]);
+    }
+    tree
+}
+
+fn main() {
+    let _ = create_nested_tree(50_000);
+    println!("End of program");
+}
+```
+
+*I didn't deserve the &#x1F980; soup*
