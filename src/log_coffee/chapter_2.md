@@ -320,11 +320,11 @@ enum Tree {
 
 impl Drop for Tree {
     fn drop(&mut self) {
-        let mut stack = vec![];
 
         match self {
             Tree::Leaf => {}
             Tree::SubTree(ref mut children) => {
+                let mut stack = vec![];
                 stack.extend(children.drain(..));
 
                 while let Some(mut node) = stack.pop() {
@@ -356,3 +356,31 @@ fn main() {
 ```
 
 *I didn't deserve the &#x1F980; soup*
+
+## Benchmarking
+Since we have two implementations now, I wrote a small benchmark to test which one is actually performant
+
+```rust 
+#[bench]
+fn bench_drop_nested_tree(b: &mut Bencher) {
+    b.iter(|| {
+        for i in 0..100 {
+            let _ = create_nested_tree(i * 1000);
+        }
+    });
+}
+```
+* Without the wrapper
+```
+running 1 test
+test tests::bench_drop_nested_tree ... bench: 245,870,757 ns/iter (+/- 16,996,363)
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 1 measured; 0 filtered out; finished in 73.85s
+```
+* With the wrapper <mark>Winner!</mark>
+```
+running 1 test
+test tests::bench_drop_nested_tree ... bench: 165,135,733 ns/iter (+/- 25,180,926)
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 1 measured; 0 filtered out; finished in 48.66s
+```

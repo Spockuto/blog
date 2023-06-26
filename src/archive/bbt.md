@@ -22,7 +22,7 @@ Problem Solved. But the bus trip was gonna be boring. So I thought maybe I can d
 I had to leave the by 6am. So I stopped Big Bang Theory download. But direct-torrents doesn't have a `user cache`. So I had to seed Big Bang Theory all over again because I deleted it from the queue. I added it to the queue and the movie was downloading without any trouble. Time for a pleasant sleep.
 > ETA 4 hours. The next day.
 
-I woke up and found FINDING DORY downloaded and Big Bang Theory was ready to be downloaded again. But I had already downloaded some part of that zip file. Thanks to **wget -c, **it was back on track resuming from the part where I stopped the download. I was going to leave my laptop unattended for a whole day and so I prepared it for the worst. I gave it the lowest display power and lock screen on 5 seconds of inactivity. I could have just closed the lid and went with no suspend but somehow it interfered with my Wi-Fi connection. My laptop can run for 3 hours without power in this setting and that's better than most.
+I woke up and found FINDING DORY downloaded and Big Bang Theory was ready to be downloaded again. But I had already downloaded some part of that zip file. Thanks to `wget -c`,it was back on track resuming from the part where I stopped the download. I was going to leave my laptop unattended for a whole day and so I prepared it for the worst. I gave it the lowest display power and lock screen on 5 seconds of inactivity. I could have just closed the lid and went with no suspend but somehow it interfered with my Wi-Fi connection. My laptop can run for 3 hours without power in this setting and that's better than most.
 
 ![No Interruptions _/\\_](https://cdn-images-1.medium.com/max/4480/1*SJMEvY9zd_feOEIanxY4nQ.jpeg)
 > ETA 18 hours.
