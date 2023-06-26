@@ -1,0 +1,1686 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js ayu">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>log_coffee!</title>
+        <meta name="robots" content="noindex" />
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="custom.css">
+        <link rel="stylesheet" href="./theme/catppuccin.css">
+        <link rel="stylesheet" href="./theme/catppuccin-highlight.css">
+
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "ayu" : "ayu";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('ayu')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html">log_coffee!</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="log_coffee/chapter_2.html">Sweet Jesus, Pooh! That's Not Honey! - You're Eating Recursion!</a></li><li class="chapter-item expanded "><a href="log_coffee/chapter_1.html">Why u so mean?</a></li><li class="chapter-item expanded "><a href="log_coffee/chapter_0.html">Lindenmayer systems</a></li></ol></li><li class="chapter-item expanded "><a href="archive.html">Archive</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="archive/visualizer.html">Visualization</a></li><li class="chapter-item expanded "><a href="archive/fractals.html">Fractals</a></li><li class="chapter-item expanded "><a href="archive/universe.html">The center of the Universe is not a black hole. Its the opposite</a></li><li class="chapter-item expanded "><a href="archive/hash.html">Choosing a good hash function</a></li><li class="chapter-item expanded "><a href="archive/bbt.html">How I downloaded Big Bang Theory Season 9 in my unstable network</a></li></ol></li><li class="chapter-item expanded "><a href="template.html">Template</a></li><li class="chapter-item expanded "><a href="keys.html">Keys</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="latte">Latte</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="frappe">Frappé</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="macchiato">Macchiato</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mocha">Mocha</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">log_coffee!</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/Spockuto/blog" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="log_coffee"><a class="header" href="#log_coffee">log_coffee!</a></h1>
+<ul>
+<li>Jun 21, 2023 <a href="./log_coffee/chapter_2.html">Sweet Jesus, Pooh! That's Not Honey! - You're Eating Recursion!</a> </li>
+<li>Apr 29, 2023 <a href="./log_coffee/chapter_1.html">Why u so mean?</a> </li>
+<li>Mar 25, 2023 <a href="./log_coffee/chapter_0.html">Lindenmayer systems</a></li>
+</ul>
+<h2 id="archive"><a class="header" href="#archive">Archive</a></h2>
+<p>An archive of previous blog posts written in Medium</p>
+<ul>
+<li>Nov 05, 2019 <a href="./archive/visualizer.html">Visualization</a></li>
+<li>Aug 31, 2018 <a href="./archive/fractals.html">Fractals</a></li>
+<li>Sep 19, 2016 <a href="./archive/universe.html">The center of the Universe is not a black hole. It's the opposite</a></li>
+<li>Aug 07, 2016 <a href="./archive/hash.html">Choosing a good hash function</a></li>
+<li>Jun 25, 2016 <a href="./archive/bbt.html">How I downloaded Big Bang Theory Season 9 in my unstable network</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="sweet-jesus-pooh-thats-not-honey---youre-eating-recursion"><a class="header" href="#sweet-jesus-pooh-thats-not-honey---youre-eating-recursion">Sweet Jesus, Pooh! That's Not Honey! - You're Eating Recursion!</a></h1>
+<p>Most of the time, using Rust is just bliss. But today, it took us for a ride. We were reviewing some code (simplified for the blog) and stumbled upon a nested <code>enum</code> that looked like this </p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[derive(Debug)]
+enum Tree {
+    Leaf,
+    SubTree(Vec&lt;Tree&gt;),
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>Assume <code>Leaf</code> is a placeholder to hold some data and thus the <code>enum</code> allows you to create a <a href="https://en.wikipedia.org/wiki/Rose_tree"><code>Rose</code></a> tree. Now, we have a function <code>create_nested_tree</code> that accepts a single parameter <code>depth</code> as input and creates a flat <code>Tree</code> with depth <code>depth</code> and a <code>Leaf</code> at the end.</p>
+<pre><pre class="playground"><code class="language-rust">fn create_nested_tree(depth : i32) -&gt; Tree {
+    let mut tree = Tree::Leaf;
+    for _ in 0..depth {
+        tree = Tree::SubTree(vec![tree]);
+    }
+    tree
+}
+
+fn main() {
+    println!(&quot;{:#?}&quot;, create_nested_tree(5));
+}
+
+</code></pre></pre>
+<p>This would produce the following output.</p>
+<pre><code>SubTree(
+    [
+        SubTree(
+            [
+                SubTree(
+                    [
+                        SubTree(
+                            [
+                                SubTree(
+                                    [
+                                        Leaf,
+                                    ],
+                                ),
+                            ],
+                        ),
+                    ],
+                ),
+            ],
+        ),
+    ],
+)
+</code></pre>
+<p>As one behaves when they see deeply nested structures, We tried giving a large <code>depth</code> (<em>50_000</em>) to see what happens. </p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    println!(&quot;{:#?}&quot;, create_nested_tree(50_000));
+}
+</code></pre></pre>
+<p>And there we go,</p>
+<pre><code>thread 'main' has overflowed its stack
+fatal runtime error: stack overflow
+Aborted (core dumped)
+</code></pre>
+<p>Initially, we immediately suspected the <code>fmt::Debug</code> hitting a recursive call and was causing the stack overflow. So, we removed the <code>println!</code> from <code>main</code> and included a <code>println!</code> in <code>create_nested_tree</code> before returning to value to isolate the issue. (What's a debugger?)</p>
+<blockquote>
+<p>Note that the function <code>create_nested_tree</code> iteratively creates the nested <code>Tree</code> and there shouldn't be any concern of stack overflow. </p>
+</blockquote>
+<pre><pre class="playground"><code class="language-rust">#[derive(Debug)]
+enum Tree {
+    Leaf,
+    SubTree(Vec&lt;Tree&gt;),
+}
+
+fn create_nested_tree(depth : i32) -&gt; Tree {
+    let mut tree = Tree::Leaf;
+    for _ in 0..depth {
+        tree = Tree::SubTree(vec![tree]);
+    }
+    println!(&quot;End of create_nested_tree&quot;);
+    tree
+}
+
+fn main() {
+    let _ = create_nested_tree(50_000);
+}
+</code></pre></pre>
+<p>But to our surprise, </p>
+<pre><code>End of create_nested_tree
+
+thread 'main' has overflowed its stack
+fatal runtime error: stack overflow
+Aborted (core dumped)
+</code></pre>
+<p>There is no operation happening after returning the value and the code still stack overflows after the return. To debug, we created the <a href="https://blog.rust-lang.org/2016/04/19/MIR.html">MIR</a> of our code and looked at <code>create_nested_tree</code>.</p>
+<pre><code class="language-bash">cargo rustc -- --emit=mir
+
+fn create_nested_tree(_1: i32) -&gt; Tree {
+    debug depth =&gt; _1;                   // in scope 0 at src/main.rs:7:23: 7:28
+    let mut _0: Tree;                    // return place in scope 0 at src/main.rs:8:9: 8:17
+    
+    // for loop logic (removed for brevity)
+
+    bb10: {
+        _29 = const false;               // scope 1 at src/main.rs:13:5: 13:9
+        _29 = const false;               // scope 0 at src/main.rs:14:1: 14:2
+        return;                          // scope 0 at src/main.rs:14:2: 14:2
+    }
+
+    bb11 (cleanup): {
+        resume;                          // scope 0 at src/main.rs:7:1: 14:2
+    }
+
+    bb12 (cleanup): {
+        drop(_0) -&gt; bb11;                // scope 0 at src/main.rs:14:1: 14:2
+    }
+
+    bb13 (cleanup): {
+        switchInt(_29) -&gt; [false: bb11, otherwise: bb12]; // scope 0 at src/main.rs:14:1: 14:2
+    }
+}
+</code></pre>
+<p><mark>And there is our culprit block <code>bb12</code>. Once the variable <code>_0</code> ie <code>tree</code> in our code goes out of scope (return to main), the code invokes cleanup of memory of local variables and tries to drop <code>_0</code>.</mark></p>
+<p>But why would dropping a value cause a stack overflow? If not anything, we are trying to free memory. This is where the beauty of the Rust implementation and my loss of hair kicks in</p>
+<blockquote>
+<p>When an initialized variable in Rust goes out of scope or a temporary is no longer needed its destructor is run. The assignment also runs the destructor of its left-hand operand, unless it's an uninitialized variable. If a struct variable has been partially initialized, only its initialized fields are dropped. The destructor of a type consists of</p>
+<ul>
+<li>Calling its std::ops::Drop::drop method, if it has one.</li>
+<li>Recursively running the destructor of all of its fields.
+<ul>
+<li>The fields of a struct, tuple, or enum variant are dropped in declaration order.</li>
+<li>The elements of an array or owned slice are dropped from the first element to the last.</li>
+<li>The captured values of a closure are dropped in an unspecified order.</li>
+<li>Trait objects run the destructor of the underlying type.</li>
+<li>Other types don't result in any further drops.</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>Source: <a href="https://web.mit.edu/rust-lang_v1.25/arch/amd64_ubuntu1404/share/doc/rust/html/reference/destructors.html">Destructors</a></p>
+<p><mark>Following the description of Destructor, since we don't have our Drop implementation, it tries to drop the values <code>Leaf</code> and <code>SubTree</code> in the enum. However, the nested nature of the <code>enum</code> recursively places drop calls on the stack and hence causes the stack overflow</mark></p>
+<p>Finally an explanation, but how do we solve this? By implementing our own <code>Drop</code> implementation which isn't recursive.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>impl Drop for Tree {
+    fn drop(&amp;mut self) {
+        let mut stack = vec![*self];
+        while let Some(mut node) = stack.pop() {
+            match node {
+                Tree::Leaf =&gt; {}
+                Tree::SubTree(ref mut children) =&gt; {
+                    stack.extend(children.drain(..));
+                }
+            }
+            // This is safe to drop
+            let _ = std::mem::replace(&amp;mut node, Tree::Leaf);
+        }
+    }
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>Rough logic behind the code </p>
+<ul>
+<li>Create our stack (ironic) and push the entire tree.</li>
+<li>Keep popping the values of the stack until its empty
+<ul>
+<li>If the node is a <code>Leaf</code>, you don't need to do anything since Rust can drop it safely.</li>
+<li>If the node is a <code>SubTree(Vec&lt;Tree&gt;)</code>, we collect all the subtrees in the vec and push them into the stack. This is achieved by <code>children.drain(..)</code>. Now, we have to make <code>node</code> safe to drop. Luckily, Rust saves us again here, since it allocates the same amount of memory for each value type in an <code>enum</code> and so we can easily replace the value at <code>node</code> with a <code>Tree::Leaf</code></li>
+</ul>
+</li>
+</ul>
+<p>Given this, when the stack is empty, all references of <code>Tree::SubTree</code> would have been replaced by <code>Tree::Leaf</code> and the tree would be safe to drop without any recursion. Or so I thought. </p>
+<pre><code>error[E0507]: cannot move out of `*self` which is behind a mutable reference
+ --&gt; src/main.rs:9:30
+  |
+9 |         let mut stack = vec![*self];
+  |                              ^^^^^ move occurs because `*self` has type `Tree`, which does not implement the `Copy` trait
+</code></pre>
+<p>Couple of things to unpack here,</p>
+<ul>
+<li>We can't do <code>#[derive(Copy, Clone)]</code> since we have a Vec which does not implement Copy (as it rightfully should).</li>
+<li>Should we even implement Copy here? Can I do something else to make it work?</li>
+</ul>
+<p><mark> Luckily yes, by using a wrapper struct we can get out of this issue. </mark></p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[derive(Debug)]
+enum Tree {
+    Leaf,
+    SubTree(Vec&lt;Tree&gt;),
+}
+
+#[derive(Debug)]
+struct Head(Tree);
+<span class="boring">}
+</span></code></pre></pre>
+<p>Now we can implement <code>Drop</code> for the wrapper <code>Head</code> in the same way and adapt our <code>create_nested_tree</code> slightly,</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>impl Drop for Head {
+    fn drop(&amp;mut self) {
+        // We can solve the *self issue here by taking
+        // advantage of Rust allocating the same
+        // amount of memory for each value of the 
+        // enum and thus swapping self.0 with 
+        // `Head(Tree::Leaf)` allows a safe drop.
+
+        let mut tree = Tree::Leaf;
+        std::mem::swap(&amp;mut self.0, &amp;mut tree);
+
+        // Now we proceed to drop the bulk of the tree 
+        // as we implemented before.
+
+        let mut stack = vec![tree];
+        while let Some(mut node) = stack.pop() {
+            match node {
+                Tree::Leaf =&gt; {}
+                Tree::SubTree(ref mut children) =&gt; {
+                    stack.extend(children.drain(..));
+                }
+            }
+            let _ = std::mem::replace(&amp;mut node, Tree::Leaf);
+        }
+    }
+}
+
+fn create_nested_tree(depth: i32) -&gt; Head {
+    let mut tree = Tree::Leaf;
+    for _ in 0..depth {
+        tree = Tree::SubTree(vec![tree]);
+    }
+    Head(tree) // returning Head(Tree) instead of Tree
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>Our new tree now looks like this </p>
+<pre><code>Head(
+    SubTree(
+        [
+            SubTree(
+                [
+                    SubTree(
+                        [
+                            SubTree(
+                                [
+                                    SubTree(
+                                        [
+                                            Leaf,
+                                        ],
+                                    ),
+                                ],
+                            ),
+                        ],
+                    ),
+                ],
+            ),
+        ],
+    ),
+)
+</code></pre>
+<p>And finally our working code. You can try running it yourself with the ▶ button at the top and feel the relief.</p>
+<pre><pre class="playground"><code class="language-rust">#[derive(Debug)]
+enum Tree {
+    Leaf,
+    SubTree(Vec&lt;Tree&gt;),
+}
+
+#[derive(Debug)]
+struct Head(Tree);
+
+impl Drop for Head {
+    fn drop(&amp;mut self) {
+        let mut current = Tree::Leaf;
+        std::mem::swap(&amp;mut self.0, &amp;mut current);
+
+        let mut stack = vec![current];
+
+        while let Some(mut node) = stack.pop() {
+            match node {
+                Tree::Leaf =&gt; {}
+                Tree::SubTree(ref mut children) =&gt; {
+                    stack.extend(children.drain(..));
+                }
+            }
+            let _ = std::mem::replace(&amp;mut node, Tree::Leaf);
+        }
+    }
+}
+
+fn create_nested_tree(depth: i32) -&gt; Head {
+    let mut tree = Tree::Leaf;
+    for _ in 0..depth {
+        tree = Tree::SubTree(vec![tree]);
+    }
+    Head(tree)
+}
+
+fn main() {
+    let _ = create_nested_tree(50_000);
+    println!(&quot;End of program&quot;);
+}
+</code></pre></pre>
+<p><em>Fin. Guess I will have some 🦀 soup now</em></p>
+<h2 id="update-23062023"><a class="header" href="#update-23062023">Update (23/06/2023)</a></h2>
+<p>After sitting on it for a while, we can actually do it without a wrapper.</p>
+<pre><pre class="playground"><code class="language-rust">#[derive(Debug)]
+enum Tree {
+    Leaf,
+    SubTree(Vec&lt;Tree&gt;),
+}
+
+impl Drop for Tree {
+    fn drop(&amp;mut self) {
+
+        match self {
+            Tree::Leaf =&gt; {}
+            Tree::SubTree(ref mut children) =&gt; {
+                let mut stack = vec![];
+                stack.extend(children.drain(..));
+
+                while let Some(mut node) = stack.pop() {
+                    match node {
+                        Tree::Leaf =&gt; {}
+                        Tree::SubTree(ref mut children) =&gt; {
+                            stack.extend(children.drain(..));
+                        }
+                    }
+                    let _ = std::mem::replace(&amp;mut node, Tree::Leaf);
+                }
+            }
+        }
+    }
+}
+
+fn create_nested_tree(depth: i32) -&gt; Tree {
+    let mut tree = Tree::Leaf;
+    for _ in 0..depth {
+        tree = Tree::SubTree(vec![tree]);
+    }
+    tree
+}
+
+fn main() {
+    let _ = create_nested_tree(50_000);
+    println!(&quot;End of program&quot;);
+}
+</code></pre></pre>
+<p><em>I didn't deserve the 🦀 soup</em></p>
+<h2 id="benchmarking"><a class="header" href="#benchmarking">Benchmarking</a></h2>
+<p>Since we have two implementations now, I wrote a small benchmark to test which one is actually performant</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[bench]
+fn bench_drop_nested_tree(b: &amp;mut Bencher) {
+    b.iter(|| {
+        for i in 0..100 {
+            let _ = create_nested_tree(i * 1000);
+        }
+    });
+}
+<span class="boring">}
+</span></code></pre></pre>
+<ul>
+<li>Without the wrapper</li>
+</ul>
+<pre><code>running 1 test
+test tests::bench_drop_nested_tree ... bench: 245,870,757 ns/iter (+/- 16,996,363)
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 1 measured; 0 filtered out; finished in 73.85s
+</code></pre>
+<ul>
+<li>With the wrapper <mark>Winner!</mark></li>
+</ul>
+<pre><code>running 1 test
+test tests::bench_drop_nested_tree ... bench: 165,135,733 ns/iter (+/- 25,180,926)
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 1 measured; 0 filtered out; finished in 48.66s
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="why-u-so-mean"><a class="header" href="#why-u-so-mean">Why u so mean?</a></h1>
+<p>For a quadratic equation of the form \( x^2 + Bx + C = 0\), the roots of the equation is given by \[\frac{-B \pm \sqrt{B^2 - 4C}}{2}\] where </p>
+<ul>
+<li>sum of the roots = \(-B \)</li>
+<li>product of the roots = \(C\)</li>
+</ul>
+<p>This is the representation everyone is most familiar with and widely used in high school. However, recently another representation has been proposed which offers much more intuition and further simplifies the equation. </p>
+<p>Let the Arithmetic Mean of the roots be \( M = -B / 2\). Simplifying the roots, we have 
+\[\frac{-B \pm \sqrt{B^2 - 4C}}{2}\]
+\[(-B/2) \pm \sqrt{B^2/4 - 4C/4}\]
+\[(-B/2) \pm \sqrt{(-B/2)^2 - C}\]
+\[M \pm \sqrt{M^2 - C}\]</p>
+<p>This representation for roots is much simpler, as one needs to just evaluate the mean in the beginning to solve the roots of the equation.</p>
+<h2 id="why"><a class="header" href="#why">Why?</a></h2>
+<p>Since the roots are equidistant from their mean, let's represent the roots as \(M + u\) and \(M - u\)
+Hence, product of the roots \[C = (M + u)(M-u)\]
+\[C = M^2 - u^2\]
+\[u^2 = M^2 - C\]
+\[u = \sqrt{M^2 - C}\]
+Substituting \(u\) in the roots, we have the roots \(M + \sqrt{M^2 - C}\) and \(M - \sqrt{M^2 - C}\)</p>
+<blockquote>
+<p>An interesting result that is much more obvious this way.
+If the roots are real, then 
+\[M^2 - C \gt 0\]
+\[M \gt \sqrt{C}\]
+\[M \gt GM \] where GM is the geometric mean of roots given by \(\sqrt{C}\)</p>
+</blockquote>
+<p>Credits to <a href="https://www.poshenloh.com/">Po-Shen Loh</a> for this improved and intuitive representation.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="lindenmayer-systems"><a class="header" href="#lindenmayer-systems">Lindenmayer systems</a></h1>
+<p>A Lindemayer system or LSystem for short consists of an alphabet of symbols that can be used to make strings, a collection of production that expand each symbol into some larger string of symbols, an initial “axiom” string from which to begin construction, and a mechanism for translating the generated strings into geometric structures.</p>
+<p>A few years back, I built a rudimentary website to extrapolate a few known LSystems in pure JS. However, presently I have been getting more comfortable with Rust 🦀 and explored rebuilding it with Rust and wasm-bindgen to get better performance for tougher iterations.</p>
+<p>Website - <a href="https://vsekar.me/LSystems/">vsekar.me/LSystems/</a></p>
+<p>Repository - <a href="https://github.com/Spockuto/LSystems/">github.com/Spockuto/LSystems/</a></p>
+<p>Now let's explore how an axiom, a set of rules, and an angle can be developed into this beautiful fern
+<img src="https://raw.githubusercontent.com/Spockuto/blog/master/src/images/barnsley_fern.png" alt="Barnsley Fern" /></p>
+<h3 id="step-0---define-the-lsystem"><a class="header" href="#step-0---define-the-lsystem">Step 0 - Define the LSystem</a></h3>
+<p>For Barnsley Fern, the LSystem is defined as follows</p>
+<pre><code>Axiom : X
+Rules : 
+ - X -&gt; F-[[X]+X]+F[+FX]-X
+ - F -&gt; FF
+Angle : 22.5
+</code></pre>
+<p>This translates into the following for our Rust implementation.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>lazy_static! {
+    static ref BARNSLEY_FERN: LSystem = LSystem {
+        variables: &quot;XF&quot;,
+        axiom: &quot;X&quot;,
+        rules: vec![
+            ('X', &quot;F-[[X]+X]+F[+FX]-X&quot;), 
+            ('F', &quot;FF&quot;),
+        ]
+        .into_iter()
+        .collect(),
+        angle: 22.5,
+        max_rounds: 8,
+    };
+}
+<span class="boring">}
+</span></code></pre></pre>
+<ul>
+<li><em>variables</em> : These are the identifiers that will be considered during building the sequence. Others will be skipped.</li>
+<li><em>axiom</em> : The initial sequence</li>
+<li><em>rules</em> : Expansion rules for each identifier</li>
+<li><em>angle</em> : Explained later</li>
+<li><em>max_rounds</em> - Implementation detail. Maximum number of supported iterations before running out of heap memory.</li>
+</ul>
+<h3 id="step-1---generate-the-sequence"><a class="header" href="#step-1---generate-the-sequence">Step 1 - Generate the sequence</a></h3>
+<p>Once the LSystem is defined, we can build the drawing sequence. Iterations define the number of rounds the sequence will be expanded using the given rules. The higher the iteration, the better defined the picture is.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>/// Generate the Turtle graphics sequence for given iterations
+pub fn expand(&amp;self, iterations: u32) -&gt; String {
+
+    // panic if given iterations are greater than the accepted limit.
+    if iterations &gt; self.0.max_rounds {
+        panic!(&quot;Max limit reached&quot;);
+    }
+
+    let mut sequence = String::new();
+    for i in 0..iterations {
+        if i == 0 {
+            // First iteration is the axiom
+            sequence.insert_str(0, self.0.axiom);
+        } else {
+            let sequence_copy = sequence.to_string();
+            let mut insert_index = 0;
+            for identifier in sequence_copy.chars() {
+                // Skip if the variable in sequence doesn't have a rule
+                if !self.0.variables.contains(identifier) {
+                    insert_index += 1;
+                    continue;
+                }
+                // Expand the sequence based on the rule
+                let rule = self.0.rules.get(&amp;identifier).unwrap();
+                sequence.remove(insert_index);
+                sequence.insert_str(insert_index, rule);
+                insert_index += &amp;rule.len();
+            }
+        }
+        // The current sequence will be used as the generator for the next round
+    }
+    sequence
+}
+<span class="boring">}
+</span></code></pre></pre>
+<blockquote>
+<p>Note: The function above can also be written recursively but for larger iterations, you would run out of stack depth way before running out of heap memory.</p>
+</blockquote>
+<p>For Barnsley Fern, the sequence expands as follows for subsequent iterations</p>
+<div class="table-wrapper"><table><thead><tr><th>Iterations</th><th>Sequence</th></tr></thead><tbody>
+<tr><td>1</td><td>X</td></tr>
+<tr><td>2</td><td>F-[[X]+X]+F[+FX]-X</td></tr>
+<tr><td>3</td><td>FF-[[F-[[X]+X]+F[+FX]-X]+F-[[X]+X]+F[+FX]-X]+FF[+FFF-[[X]+X]+F[+FX]-X]-F-[[X]+X]+F[+FX]-X</td></tr>
+<tr><td>4</td><td>FFFF-[[FF-[[F-[[X]+X]+F[+FX]-X]+F-[[X]+X]+F[+FX]-X]+FF[+FFF-[[X]+X]+F[+FX]-X]-F-[[X]+X]+F[+FX]-X]+FF-[[F-[[X]+X]+F[+FX]-X]+F-[[X]+X]+F[+FX]-X]+FF[+FFF-[[X]+X]+F[+FX]-X]-F-[[X]+X]+F[+FX]-X]+FFFF[+FFFFFF-[[F-[[X]+X]+F[+FX]-X]+F-[[X]+X]+F[+FX]-X]+FF[+FFF-[[X]+X]+F[+FX]-X]-F-[[X]+X]+F[+FX]-X]-FF-[[F-[[X]+X]+F[+FX]-X]+F-[[X]+X]+F[+FX]-X]+FF[+FFF-[[X]+X]+F[+FX]-X]-F-[[X]+X]+F[+FX]-X</td></tr>
+</tbody></table>
+</div>
+<h3 id="step-2---draw-the-canvas-based-on-the-sequence"><a class="header" href="#step-2---draw-the-canvas-based-on-the-sequence">Step 2 - Draw the canvas based on the sequence</a></h3>
+<p>Now that the sequence is generated, we can start building the canvas. Each character in the sequence defines a particular set of operations on the canvas. This allows us to convert the sequence into a picture.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// Define length
+// Set the angle to the LSystem angle
+let angle_rad = -1.0 * PI * angle / 180.0;
+let (mut x, mut y) = (0.0, 0.0);
+let mut stack = vec![];
+
+for seq in sequence.chars() {
+    // perform operations on the canvas 
+    match seq {
+        // draw a line to (x,y) at given length and angle
+        'F' | 'A' | 'B' =&gt; {
+            x += length * angle.cos();
+            y += length * angle.sin();
+            context.line_to(x, y);
+            context.stroke();
+        }
+        'S' =&gt; {
+        // move along a line to (x,y) at given length and angle
+            x += length * angle.cos();
+            y += length * angle.sin();
+            context.move_to(x, y);
+        }
+        '+' =&gt; {
+        // rotate counterclockwise by angle_rad
+            angle += angle_rad;
+        }
+        '-' =&gt; {
+        // rotate clockwise by angle rad
+            angle -= angle_rad;
+        }
+        '[' =&gt; {
+        // push a point into stack
+            stack.push(Line { x, y, angle });
+        }
+        ']' =&gt; {
+        // Pop a point from the stack and move to it.
+            let line = stack.pop().unwrap();
+            (x, y, angle) = (line.x, line.y, line.angle);
+            context.move_to(x, y);
+        }
+        // For others, skip and continue
+        _ =&gt; continue,
+    }
+}
+<span class="boring">}
+</span></code></pre></pre>
+<div class="table-wrapper"><table><thead><tr><th>Iterations</th><th>Barnsley Fern</th></tr></thead><tbody>
+<tr><td>1</td><td><code>None</code></td></tr>
+<tr><td>2</td><td><img src="https://raw.githubusercontent.com/Spockuto/blog/master/src/images/b_fern_2.png" alt="Barnsley Fern 2" /></td></tr>
+<tr><td>3</td><td><img src="https://raw.githubusercontent.com/Spockuto/blog/master/src/images/b_fern_3.png" alt="Barnsley Fern 3" /></td></tr>
+<tr><td>4</td><td><img src="https://raw.githubusercontent.com/Spockuto/blog/master/src/images/b_fern_4.png" alt="Barnsley Fern 4" /></td></tr>
+<tr><td>5</td><td><img src="https://raw.githubusercontent.com/Spockuto/blog/master/src/images/b_fern_5.png" alt="Barnsley Fern 5" /></td></tr>
+<tr><td>...</td><td>...</td></tr>
+<tr><td>8</td><td><img src="https://raw.githubusercontent.com/Spockuto/blog/master/src/images/b_fern_8.png" alt="Barnsley Fern 8" /></td></tr>
+</tbody></table>
+</div>
+<h3 id="step-3---color-the-canvas-using-a-linear-gradient"><a class="header" href="#step-3---color-the-canvas-using-a-linear-gradient">Step 3 - Color the canvas using a linear gradient</a></h3>
+<p>The final step in generating our fractal is applying a linear gradient between two colors over our canvas. This can be achieved by applying color interpolation over each dark pixel.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let image_data = context
+    .get_image_data(0.0, 0.0, width as f64, height as f64)
+    .unwrap();
+
+// data contains 4 u8 values per pixel indicating RGBA (red, green, blue, alpha) values
+let mut data = image_data.data();
+
+// Set the linear gradient colors : color1 -&gt; color2 
+
+let c1 = Rgb::from_hex_str(&amp;color1).unwrap();
+let c2 = Rgb::from_hex_str(&amp;color2).unwrap();
+
+// linear gradient is defined using interpolation
+// Assume the fraction grows from 0 to 1
+// pixel.r = c1.r + (c2.r - c1.r) * fraction
+// pixel.g = c1.g + (c2.g - c1.g) * fraction
+// pixel.b = c1.b + (c2.b - c1.b) * fraction
+
+for index in 0..(width * height * 4) as usize {
+    // Since the canvas is drawn with black, only alpha will be set initially
+    if data[index] &gt; 0 {
+    // pixel's alpha is set
+    // Update the color using interpolation
+        let fraction = index as f32 / (height * width * 4) as f32;
+        data[index - 3] = (c1.get_red() + (c2.get_red() - c1.get_red()) * fraction) as u8;
+        data[index - 2] = (c1.get_green() + (c2.get_green() - c1.get_green()) * fraction) as u8;
+        data[index - 1] = (c1.get_blue() + (c2.get_blue() - c1.get_blue()) * fraction) as u8;
+    }
+}
+let slice_data = Clamped(&amp;data.0[..]);
+let image_data = web_sys::ImageData::new_with_u8_clamped_array_and_sh(
+    slice_data,
+    width as u32,
+    height as u32,
+)
+.unwrap();
+
+// load the data back into the canvas
+context.put_image_data(&amp;image_data, 0.0, 0.0).unwrap();
+<span class="boring">}
+</span></code></pre></pre>
+<p>With this, a linear gradient between <code>#C6EA8D</code> and <code>#FE90AF</code> gives us
+<img src="https://raw.githubusercontent.com/Spockuto/blog/master/src/images/barnsley_fern.png" alt="Barnsley Fern" /></p>
+<blockquote>
+<p>Note: Colors don't exactly behave well with linear interpolation. For more details check out <a href="https://www.alanzucconi.com/2016/01/06/colour-interpolation/">The Secrets of Colour Interpolation</a></p>
+</blockquote>
+<h2 id="fractal-tree"><a class="header" href="#fractal-tree">Fractal Tree</a></h2>
+<pre><code>Axiom : F
+Rules : 
+ - F -&gt; FF-[-F+F+F]+[+F-F-F]
+Angle : 22.5
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/Spockuto/blog/master/src/images/fractal_tree.png" alt="Fractal Tree" /></p>
+<h2 id="fractal-tree-2"><a class="header" href="#fractal-tree-2">Fractal Tree 2</a></h2>
+<pre><code>Axiom : VZFFF
+Rules : 
+ - F -&gt; F
+ - V -&gt; [+++W][---W]YV
+ - W -&gt; +X[-W]Z
+ - X -&gt; -W[+X]Z
+ - Y -&gt; YZ
+ - Z -&gt; [-FFF][+FFF]F
+Angle : 18
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/Spockuto/blog/master/src/images/fractal_tree_2.png" alt="Fractal Tree 2" /></p>
+<h2 id="dragon-curve"><a class="header" href="#dragon-curve">Dragon Curve</a></h2>
+<pre><code>Axiom : FX
+Rules : 
+ - X -&gt; X+YF+
+ - Y -&gt; -FX-Y
+Angle : 90
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/Spockuto/blog/master/src/images/dragon_curve.png" alt="Dragon Curve" /></p>
+<h2 id="32-segment-curve"><a class="header" href="#32-segment-curve">32 Segment Curve</a></h2>
+<pre><code>Axiom : F+F+F+F
+Rules : 
+ - F -&gt; -F+F-F-F+F+FF-F+F+FF+F-F-FF+FF-FF+F+F-FF-F-F+FF-F-F+F+F-F+
+Angle : 90
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/Spockuto/blog/master/src/images/32_segment.png" alt="32 Segment Curve" /></p>
+<h2 id="peano-gosper-curve"><a class="header" href="#peano-gosper-curve">Peano Gosper Curve</a></h2>
+<pre><code>Axiom : A
+Rules : 
+ - A -&gt; A-B--B+A++AA+B-
+ - B -&gt; +A-BB--B-A++A+B
+Angle : 60
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/Spockuto/blog/master/src/images/peano_gosper.png" alt="Peano Gosper Curve" /></p>
+<h2 id="koch-snowflake"><a class="header" href="#koch-snowflake">Koch Snowflake</a></h2>
+<pre><code>Axiom : F++F++F
+Rules : 
+ - F -&gt; F-F++F-F
+Angle : 60
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/Spockuto/blog/master/src/images/koch_snowflake.png" alt="Koch Snowflake" /></p>
+<h2 id="koch-snowflake-2"><a class="header" href="#koch-snowflake-2">Koch Snowflake 2</a></h2>
+<pre><code>Axiom : F+F+F+F
+Rules : 
+ - F -&gt; F-F+F+F-F
+Angle : 60
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/Spockuto/blog/master/src/images/koch_snowflake_2.png" alt="Koch Snowflake 2" /></p>
+<h2 id="koch-snowflake-3"><a class="header" href="#koch-snowflake-3">Koch Snowflake 3</a></h2>
+<pre><code>Axiom : F
+Rules : 
+ - F -&gt; F-F+F+F-F
+Angle : 85
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/Spockuto/blog/master/src/images/koch_snowflake_3.png" alt="Koch Snowflake 3" /></p>
+<h2 id="quadratic-koch-island"><a class="header" href="#quadratic-koch-island">Quadratic Koch Island</a></h2>
+<pre><code>Axiom : F+F+F+F
+Rules : 
+ - F -&gt; F+F-F-FF+F+F-F
+Angle : 90
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/Spockuto/blog/master/src/images/quad_koch_island.png" alt="quad. Koch Island" /></p>
+<h2 id="quadratic-koch-island-2"><a class="header" href="#quadratic-koch-island-2">Quadratic Koch Island 2</a></h2>
+<pre><code>Axiom : F+F+F+F
+Rules : 
+ - F -&gt; F+FF-FF-F-F+F+FF-F-F+F+FF+FF-F
+Angle : 90
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/Spockuto/blog/master/src/images/quad_koch_island_2.png" alt="quad. Koch Island 2" /></p>
+<h2 id="islands"><a class="header" href="#islands">Islands</a></h2>
+<pre><code>Axiom : F+F+F+F
+Rules : 
+ - F -&gt; F-SFF+F+FF+F-S-FFF-F+F+F-FFFF
+ - S -&gt; SSSSSSSS
+Angle : 90
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/Spockuto/blog/master/src/images/islands.png" alt="Islands" /></p>
+<h2 id="islands-2"><a class="header" href="#islands-2">Islands 2</a></h2>
+<pre><code>Axiom : F+F+F+F
+Rules : 
+ - F -&gt; F-SF+FF+F+FF-S-FF+SF-FF-F-FF+S+FFF
+ - S -&gt; SSSSSS
+Angle : 90
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/Spockuto/blog/master/src/images/islands_2.png" alt="Islands 2" /></p>
+<h2 id="sierpinski-triangle"><a class="header" href="#sierpinski-triangle">Sierpinski Triangle</a></h2>
+<pre><code>Axiom : FXF--FF--FF
+Rules : 
+ - F -&gt; FF
+ - X -&gt; --FXF++FXF++FXF--
+Angle : 60
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/Spockuto/blog/master/src/images/sierpinski_t.png" alt="Sierpinski Triangle" /></p>
+<h2 id="sierpinski-square"><a class="header" href="#sierpinski-square">Sierpinski Square</a></h2>
+<pre><code>Axiom : F+F+F+F
+Rules : 
+ - F -&gt; FF+F+F+F+FF
+Angle : 90
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/Spockuto/blog/master/src/images/sierpinski_s.png" alt="Sierpinski Square" /></p>
+<h2 id="hilbert-curve"><a class="header" href="#hilbert-curve">Hilbert Curve</a></h2>
+<pre><code>Axiom : X
+Rules : 
+ - X -&gt; +YF-XFX-FY+
+ - Y -&gt; -XF+YFY+FX-
+Angle : 90
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/Spockuto/blog/master/src/images/hilbert.png" alt="Hilbert Curve" /></p>
+<h2 id="frec-fractal"><a class="header" href="#frec-fractal">Frec Fractal</a></h2>
+<pre><code>Axiom : XYXYXYX+XYXYXYX+XYXYXYX+XYXYXYX
+Rules : 
+ - F -&gt; 
+ - X -&gt; FX+FX+FXFY-FY-
+ - Y -&gt; +FX+FXFY-FY-FY
+Angle : 90
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/Spockuto/blog/master/src/images/frec_fractal.png" alt="Frec Fractal" /></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="archive-1"><a class="header" href="#archive-1">Archive</a></h1>
+<p>An archive of previous blog posts written in Medium</p>
+<ul>
+<li>Nov 05, 2019 <a href="./archive/visualizer.html">Visualization</a></li>
+<li>Aug 31, 2018 <a href="./archive/fractals.html">Fractals</a></li>
+<li>Sep 19, 2016 <a href="./archive/universe.html">The center of the Universe is not a black hole. It's the opposite</a></li>
+<li>Aug 07, 2016 <a href="./archive/hash.html">Choosing a good hash function</a></li>
+<li>Jun 25, 2016 <a href="./archive/bbt.html">How I downloaded Big Bang Theory Season 9 in my unstable network</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="visualization"><a class="header" href="#visualization">Visualization</a></h1>
+<p>I have always been amused by how simple Mathematical rules govern complex fractals and designs. I believe the more we explore, the more closer we get to understand nature. I have listed a few structures I have explored over the years.</p>
+<h3 id="kirby-krackle"><a class="header" href="#kirby-krackle"><a href="https://vsekar.me/kirby/">Kirby Krackle</a></a></h3>
+<p>Kirby Krackle (also known as Kirby Dots) is an artistic convention in superhero and science fiction comic books and similar illustrations, in which a field of black pseudo-fractal images is used to represent negative space around unspecified kinds of energy. It can be seen used throughout Spider Man - Into the Spider Verse movie to create the illusion of energy.</p>
+<h3 id="audio-visualizer"><a class="header" href="#audio-visualizer"><a href="https://vsekar.me/visualizer/audiovis/">Audio Visualizer</a></a></h3>
+<p>A circular frequency visulaizer. I always wanted to try the media API and explore its efficiency on real time capturing. A Game of Thrones inspired page design. (Requires microphone permission)</p>
+<h3 id="lindenmayer-systems-1"><a class="header" href="#lindenmayer-systems-1"><a href="http://vsekar.me/LSystems">Lindenmayer Systems</a></a></h3>
+<p>An L-system consists of an alphabet of symbols that can be used to make strings, a collection of production that expand each symbol into some larger string of symbols, an initial “axiom” string from which to begin construction, and a mechanism for translating the generated strings into geometric structures. Read <a href="archive/./fractals.html#lindenmayer-systems">more</a></p>
+<h3 id="penrose-tiling"><a class="header" href="#penrose-tiling"><a href="http://vsekar.me/Penrose">Penrose Tiling</a></a></h3>
+<p>Penrose tiling is a non-periodic tessellation generated by an aperiodic set of tiles. A tessellation of a flat surface is the tiling of a plane using one or more geometric shapes, called tiles, with no overlaps and no gaps. The aperiodicity of tiles implies that a shifted copy of a tiling will never match the original. Read <a href="archive/./fractals.html#penrose-tiling">more</a></p>
+<h3 id="mandlebrot-set"><a class="header" href="#mandlebrot-set"><a href="https://vsekar.me/Mandelbrot/">Mandlebrot Set</a></a></h3>
+<p>It is a particular set of complex numbers which has a highly convoluted fractal boundary when plotted. Images of the Mandelbrot set exhibit an elaborate and infinitely complicated boundary that reveals progressively ever-finer recursive detail at increasing magnifications. The “style” of this repeating detail depends on the region of the set being examined. The set’s boundary also incorporates smaller versions of the main shape, so the fractal property of self-similarity applies to the entire set, and not just to its parts. Read <a href="archive/./fractals.html#mandlebrot-sets">more</a></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="fractals"><a class="header" href="#fractals">Fractals</a></h1>
+<p>Fractals are infinitely complex patterns that gain shape from simple structures bound to various mathematical rules and constraints. They are useful in modelling structures (such as snowflakes) in which similar patterns recur at progressively smaller scales, and in describing partly random or chaotic phenomena such as crystal growth and galaxy formation. They act as to bridge to explain naturally occurring shapes over a set of fixed rules. Over this article, I have explored few of the fascinating fractals I have come across and the visual treat they offer.</p>
+<h2 id="lindenmayer-systems-2"><a class="header" href="#lindenmayer-systems-2">Lindenmayer Systems</a></h2>
+<p>An L-system consists of an alphabet of symbols that can be used to make strings, a collection of production that expand each symbol into some larger string of symbols, an initial <em>“axiom</em>” string from which to begin construction, and a mechanism for translating the generated strings into geometric structures.</p>
+<p>The L-Systems over controlled iterations provide us an unique string with perceived geometric properties. This motion is perceived using turtle graphics where the turtle moves with commands that are relative to its own position, such as “move forward 10 spaces” and “turn left 90 degrees” depending upon each variable in the string. The pen carried by the turtle can also be controlled, by enabling it, setting its colour, or setting its width.</p>
+<p>Some of the constant literals of Lindenmayer Systems.</p>
+<pre><code>X → F+[[X]-X]-F[-FX]+X
+</code></pre>
+<ul>
+<li>
+<p>F means “draw forward”</p>
+</li>
+<li>
+<p>− means “turn left by some angle”</p>
+</li>
+<li>
+<ul>
+<li>means “turn right some angle”.</li>
+</ul>
+</li>
+<li>
+<p>X and Y <em>mostly</em> does not correspond to any drawing action and is used to control the evolution of the curve.</p>
+</li>
+<li>
+<p>The square bracket “[“ corresponds to saving the current values for position and angle, which are restored when the corresponding “]” is executed.</p>
+</li>
+</ul>
+<blockquote>
+<p>Fractal Plant</p>
+</blockquote>
+<pre><code>**variables** : X F
+**constants** : + − [ ]
+**start** : X
+**rules** : (X → F+[[X]-X]-F[-FX]+X), (F → FF)
+**angle** : 30°
+</code></pre>
+<p>Under 7 iterations, it produces this beautiful tree.</p>
+<p><img src="https://cdn-images-1.medium.com/max/3564/1*ReJphFibIiZRdTil7UtJvA.png" alt="Fractal Plant (7 iterations)" /></p>
+<blockquote>
+<p>Dragon Fractal</p>
+</blockquote>
+<pre><code>**variables** : X Y
+**constants** : F + −
+**start** : FX
+**rules** : (X → X+YF+), (Y → −FX−Y)
+**angle** : 90°
+</code></pre>
+<p><img src="https://cdn-images-1.medium.com/max/2332/1*Q93vRgGIDFYq0WDiY4B-IQ.png" alt="Dragon Fractal (14 iterations)" /></p>
+<blockquote>
+<p>Fractal Curve Tree</p>
+</blockquote>
+<pre><code>**constants** : F + −
+**start** : F
+**rules** : F → FF-[-F+F+F]+[+F-F-F]
+**angle** : 22.5°
+</code></pre>
+<p><img src="https://cdn-images-1.medium.com/max/2916/1*V-oaPUQyoLbiNSwqmMIEiQ.png" alt="Fractal Curve Tree (5 iterations)" /></p>
+<blockquote>
+<p>Closed Fractal</p>
+</blockquote>
+<pre><code>**variables** : X Y
+**constants** : F + −
+**start** : XYXYXYX+XYXYXYX+XYXYXYX+XYXYXYX
+**rules** : (F → ), (X → FX+FX+FXFY-FY-) , (Y → +FX+FXFY-FY-FY)
+**angle** : 90°
+</code></pre>
+<p><img src="https://cdn-images-1.medium.com/max/2336/1*65LXAyZJ9pdcHla_WDf5Tg.png" alt="Closed Fractal (4 iterations)" /></p>
+<p>Code : <a href="https://github.com/Spockuto/LSystems">https://github.com/Spockuto/LSystems</a></p>
+<p>Live demo : <a href="http://vsekar.me/LSystems">http://vsekar.me/LSystems</a></p>
+<h2 id="penrose-tiling-1"><a class="header" href="#penrose-tiling-1">Penrose Tiling</a></h2>
+<p><strong>Penrose tiling</strong> is a non-periodic tessellation generated by an aperiodic set of tiles. A <strong>tessellation</strong> of a flat surface is the tiling of a plane using one or more geometric shapes, called tiles, with no overlaps and no gaps. The <strong>aperiodicity</strong> of tiles implies that a shifted copy of a tiling will never match the original. It is <strong>self-similar</strong>, so the same patterns occur at larger and larger scales. Thus, the tiling can be obtained through “inflation” or “deflation” and every finite patch from the tiling occurs infinitely many times.</p>
+<p><em>Penrose’s first tiling</em> uses pentagons and three other shapes: a five-pointed “star” (a pentagram), a “boat” (roughly 3/5 of a star) and a “diamond” (a thin rhombus). <em>Penrose’s second tiling</em> uses quadrilaterals called the “kite” and “dart”, which may be combined to make a rhombus.
+<a href="http://preshing.com/20110831/penrose-tiling-explained/">Penrose Tiling Explained</a></p>
+<p>This article explains the basic algorithm behind the tiling. Several properties and common features of the Penrose tilings involve the golden ratio <em>φ = (1+√5)/2 (approximately 1.618).</em></p>
+<p><img src="https://cdn-images-1.medium.com/max/3892/1*i6RixSCOL8N63acLwtH4pA.png" alt="Penrose tiling v1 ( 4 iterations )" /></p>
+<p><img src="https://cdn-images-1.medium.com/max/3892/1*2P3d24Le7EmXrJVA0NQF2A.png" alt="Penrose tiling v2 ( 9 iterations )" /></p>
+<p>Code : <a href="https://github.com/Spockuto/Penrose">https://github.com/Spockuto/Penrose</a></p>
+<p>Live demo : <a href="http://vsekar.me/Penrose">http://vsekar.me/Penrose</a></p>
+<h2 id="mandlebrot-sets"><a class="header" href="#mandlebrot-sets">Mandlebrot Sets</a></h2>
+<p>It’s the the set of all complex numbers <em>z</em> for which the sequence defined by the iteration :</p>
+<pre><code>*z(0) = z,    z(n+1) = z(n)*z(n) + z,    n=0,1,2, ... *  
+</code></pre>
+<p>remains bounded. This means that there is a number ***B ***such that the absolute value of all iterates *z(n) *never gets larger than <em><strong>B</strong></em>. A bounded sequence may or not have a limit.</p>
+<p>For example, if *z=0 *then <em>z(n) = 0</em> for all <em>n</em>, so that the limit of the (1) is zero. On the other hand, if *z=i *( <em>i</em> being the imaginary unit), then the sequence oscillates between <em>i</em> and <em>i-1</em>, so remains bounded but it does not converge to a limit.</p>
+<p>Treating the real and imaginary parts of *z *as image coordinates on the complex plane, pixels may then be coloured according to how soon the sequence crosses an arbitrarily chosen threshold, with a special colour (usually black) used for the values of *z *for which the sequence has not crossed the threshold after the predetermined number of iterations <em>(this is necessary to clearly distinguish the Mandelbrot set image from the image of its complement).</em></p>
+<p>**<em>Images of the Mandelbrot set exhibit an elaborate and infinitely complicated boundary that <strong>reveals progressively ever-finer recursive detail at increasing magnifications</strong></em>. The “style” of this repeating detail depends on the region of the set being examined. The set’s boundary also incorporates smaller versions of the main shape, so the fractal property of self-similarity applies to the entire set, and not just to its parts.</p>
+<p><img src="https://cdn-images-1.medium.com/max/5720/1*GrXYt3QYs6fIsfd9j-ctzQ.png" alt="Mandlebrot Set" /></p>
+<p>Code : <a href="https://github.com/Spockuto/Mandelbrot">https://github.com/Spockuto/Mandelbrot</a></p>
+<p>Live demo : <a href="https://vsekar.me/Mandelbrot/">https://vsekar.me/Mandelbrot/</a></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="the-center-of-the-universe-is-not-a-black-hole-its-the-opposite"><a class="header" href="#the-center-of-the-universe-is-not-a-black-hole-its-the-opposite">The center of the Universe is not a black hole. Its the opposite.</a></h1>
+<p>Disclaimer : The theory is purely hypothetical and has no background to support it.</p>
+<p><img src="https://cdn-images-1.medium.com/max/3000/1*tB_QNu53Ce4lTPY6iedJ7Q.jpeg" alt="" /></p>
+<p>The <em>wormhole</em> is one of the most exciting phenomenon in modern day gravitational physics. The ability to travel millions of light years in mere seconds is a huge adrenaline rush for any normal human being. But this is the case for just one wormhole. <strong>Consider Infinite</strong>.</p>
+<h3 id="background"><a class="header" href="#background">Background</a></h3>
+<p>The wormholes are an extension of Einstein’s General theory of Relativity relating the existence of gravity is due to the curvature created by the huge mass in the space time.</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*HudRyrAMPK8bgg_vVPycIw.jpeg" alt="" /></p>
+<p>The curvature leads to all objects being attracted to a single source essentially giving rise to gravity. Every object with mass can curve space time. This single unified theory of gravitational physics has solved age old problems and has given rise to infinitesimal theories. One of them being <em>Negative mass</em>.</p>
+<h3 id="negative-mass"><a class="header" href="#negative-mass">Negative mass</a></h3>
+<blockquote>
+<p>In theoretical physics, <strong>negative mass</strong> is a hypothetical concept of matter whose mass is of opposite sign to the mass of normal matter, e.g. −2 kg. The properties of this object would violate everything invented till now owing to the large criticism faced when it was proposed. However it was able to explain a large set of speculative theories including <strong>Wormholes</strong>.</p>
+</blockquote>
+<h3 id="wormholes"><a class="header" href="#wormholes">Wormholes</a></h3>
+<p>If Einstein was right and every object with mass could curve space-time, then the object with negative mass could do the same too but in reverse.</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*zKbife77CGSlAH89mTIE4A.jpeg" alt="" /></p>
+<p>Consider a folded space time extending billions of light years. On one side there’s a huge mass curving space time normally. But on the other hand there’s a huge chunk of negative mass curving the space in the opposite direction. Since they are curved in opposite direction and space is folded, they are due to meet at a single point achieving a tunnel between the two space-time.</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*K6oWNn7d7N8_4Qoy9EFMog.jpeg" alt="" /></p>
+<p>This tunnel is a link between two space-time separated by billions of light years but now at the distance of few feet. This theory has been widely used in many movies making it more fictional. The complicated math existing behind them proves that achieving such a stable wormhole is impossible provided with the present day technology.</p>
+<h3 id="spherical-wormholes"><a class="header" href="#spherical-wormholes">Spherical Wormholes</a></h3>
+<p>Coming to my theory, wormholes can be simplified as a pipe with two ends. Also the length of the pipe can be controlled by the amount of mass present at both ends.</p>
+<blockquote>
+<p>Consider a hypothetical space, where each pipe is of equal length and they have a fixed center. It is basically a sphere of space-time so curved and convoluted, it gave rise to infinite wormholes which are the diameters of the sphere. They have a positive mass curving space at one end and a huge negative mass at the center curving the space in opposite direction.</p>
+</blockquote>
+<p>This gives rise to a structure similar to that of an atom. This protons are the condensed huge negative mass and electrons are the infinite celestial bodies curving the space-time on the surface of sphere. This gives rise to an medium for not only to travel between two space-times, but infinite. This also provides an understanding to the structure of the universe (Maybe?)</p>
+<p>Such an huge amount of negative mass is condensed at the center of the universe. This might give rise to what we can call a</p>
+<h3 id="super-massive-anti-black-hole-smabh"><a class="header" href="#super-massive-anti-black-hole-smabh">Super massive Anti black hole (SMABH)</a></h3>
+<blockquote>
+<p>It is not a white hole <em>/\</em></p>
+</blockquote>
+<p>A single entity with huge amount of anti gravity, which basically does everything opposite to a black hole. It repels everything in existence, including space-time. If space-time is a sphere and a SMABH exists at the center, It could repel everything away explaining why the universe is expanding. It could also explain why the relative distance between two objects increases as the surface area of the space time expands.</p>
+<blockquote>
+<p>But how does it still expand?</p>
+</blockquote>
+<p>The answer lies within Hawking’s equation. It was proposed that a black-hole continuously looses mass and achieves singularity. Proposing a reverse theory would imply the increase in the negative mass of the SMABH causing more repulsion. This is why the universe is still expanding.</p>
+<blockquote>
+<p>But why aren’t the wormholes exploitable?</p>
+</blockquote>
+<p>The curvature in space-time caused by this entity is high but since the space is expanding away, they never meet contradicting the theory of infinite wormholes. However, huge masses like super massive black holes are able to exert such curvature, such that they finally meet. This opens a wormhole inside the black hole where the tunnel basically redirects us to the center of the universe. However objects are short-lived there because of the high intensity of radiation. This is the reason why wormholes have been not been able to be exploited till now.</p>
+<blockquote>
+<p>Why does the universe appears flat?</p>
+</blockquote>
+<p>This is similar to the phenomenon on earth. Are we able to explore the curvature of the earth? No because it has a very high curvature making our line of sight flat. The similar applies for the universe. Maybe we need to invent new technology that could explore the farthest of the universe which could provide a slight hint of spherical space-time.</p>
+<blockquote>
+<p>This is just one of my personal theories which may or may not be possible. Also, this could affect the nature of everything found until now. But according to the <em><strong>Law of Infinite Probabilities</strong></em>, this might be true one day. I really hope it does.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><p><img src="https://cdn-images-1.medium.com/max/2000/1*KvnXSdcocOy8tpxGbLUCnw.jpeg" alt="" /></p>
+<h1 id="choosing-a-good-hash-function"><a class="header" href="#choosing-a-good-hash-function">Choosing a good hash function</a></h1>
+<p>Securing your application is one of the hardest part of the development cycle. There are a lot of security aspects one has to look far ahead and variety of tools are available to solve each issue. But choosing the right tool is always a hardship. Specifically when it comes to encryption or hashing.</p>
+<h3 id="passwords"><a class="header" href="#passwords">Passwords</a></h3>
+<p>Hashing passwords is the best way of storing passwords in database. But it is’t that simple. If your database is compromised and you have just hashed the password, they could easily look for matching hashes by constructing a Rainbow table with commonly used passwords.</p>
+<h3 id="salt"><a class="header" href="#salt">Salt</a></h3>
+<p>To solve this problem, every password is concatenated with a random string called the <em>SALT</em> and then the string is hashed. The salt is stored in the database and used when we have to authenticate the user. This increases the security exponentially as there won’t be any common hashes and finding a correlation between the salt and hash is practically impossible.</p>
+<p>However choosing the right hash algorithm is difficult. People always use the obvious choice <em><strong>SHA1/2/3</strong></em> which is completely wrong. SHA is constructed mainly to be fast making them suitable for large files. They have a speed of 12–15 <em><strong>cpb</strong></em> and hence bruteforce is highly possible. A more preferable algorithm for hashing is <strong>pbkdf2-hmac</strong> which repeatedly uses SHA on the logic of a <strong>PRNG</strong>. These algorithms are relatively slower that SHA and hence takes bruteforce out of the table.</p>
+<h3 id="files"><a class="header" href="#files">Files</a></h3>
+<p>The SHA algorithm is specifically designed for acting as a digital signature to large files. The SHA1/2/3 algorithms are designed by group of cryptologists who compete in the competition organized by <strong>NIST</strong>. These competitions are conducted when a collision is detected in the previous SHA. Before SHA, Message Digest was “THE” secure algorithm. Nowadays people barely use it because of too many collisions.</p>
+<p>Every software is provided with a hash which helps us to verify the authenticity of the file. However this can only help us identify if the file was damaged during the download. If someone was able to hack into the website and modify the software, it’s doesn’t take much time to modify the hash too. Hence there isn’t a completely secure way to check the authenticity of the file.</p>
+<p>The main factor which comes with hashing large files is speed. SHA2 provides a speed of 208mbps. However this can be further improved. A tree based hash structure is constructed which improves security as well as speed by utilizing the multi-core system. Merkel tree is widely used nowadays. The present SHA3 provides us with Sakura method for a tree based hash construction. These are much faster than previous algorithm and hence large files can be hashed easily.</p>
+<h3 id="data-encryption"><a class="header" href="#data-encryption">Data encryption</a></h3>
+<p>The data encryption is used to encrypt files when transferred over unsecure networks so that even if the file is retrieved they couldn’t be accessed. The algorithms use for this purpose are <strong>DES</strong> and <strong>AES</strong> which work on a key based encryption. However software gaints develop their own encryption algorithm which provides even more security as the algorithm isnt exposed. One such example is how YouTube URL is produced from just the Video’s title (or maybe more :P)</p>
+<h3 id="key-exchange"><a class="header" href="#key-exchange">Key Exchange</a></h3>
+<p>There are times when we need to transfer to a short information but must be highly secure. This is established by <strong>RSA</strong>. RSA was one of the primitive algorithms which uses key based encryption to transfer data. Key based algorithm are of two types</p>
+<ul>
+<li>
+<p>Symmetrical (public)</p>
+</li>
+<li>
+<p>Asymmetrical(public/private)</p>
+</li>
+</ul>
+<p>DES and AES are of symmetrical types. RSA is an asymmetric algorithm. It uses public key to encrypt which can be decrypted only by the private key. These algorithms are slow and hence used only on very short information.</p>
+<p>Modern day money is Bitcoin. They use a further complicated algorithm called <strong>ECDSA</strong> which is widely used nowadays.</p>
+<p>This is just an outline of where hashes and encryption are used frequently. Some algorithms like Blowfish, bcrypt, BLAKE2 haven’t been mentioned here but at specific constraints, others don’t stand a chance against these methods.</p>
+<h2 id="may-the-security-be-with-you"><a class="header" href="#may-the-security-be-with-you">May the security be with you.</a></h2>
+<ul>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/SHA-1?wprov=sfla1">SHA</a> — Secure Hash Algorithm</p>
+</li>
+<li>
+<p>CPB — cycles per byte.</p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/PBKDF2?wprov=sfla1">PBKDF2-HMAC</a> — Password-Based Key Derivation Function — Hash Message Authentication Code</p>
+</li>
+<li>
+<p>PRNG — Pseudo Random Number Generator</p>
+</li>
+<li>
+<p>NIST — National Institute of standards and technology</p>
+</li>
+<li>
+<p>DES — Data Encryption Standard</p>
+</li>
+<li>
+<p>AES — Advanced Encryption Standard</p>
+</li>
+<li>
+<p>RSA — Rivest,Shamir,Adleman</p>
+</li>
+<li>
+<p>ECDSA — Elliptic Curve Digital Signature Algorithm</p>
+</li>
+</ul>
+<p>Useful Links.</p>
+<ul>
+<li>
+<p><a href="http://security.stackexchange.com/questions/16354/whats-the-advantage-of-using-pbkdf2-vs-sha256-to-generate-an-aes-encryption-key">http://security.stackexchange.com/questions/16354/whats-the-advantage-of-using-pbkdf2-vs-sha256-to-generate-an-aes-encryption-key</a></p>
+</li>
+<li>
+<p><a href="https://www.addedbytes.com/blog/why-you-should-always-salt-your-hashes/">https://www.addedbytes.com/blog/why-you-should-always-salt-your-hashes/</a></p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Advanced_Encryption_Standard?wprov=sfla1">https://en.wikipedia.org/wiki/Advanced_Encryption_Standard?wprov=sfla1</a></p>
+</li>
+<li>
+<p><a href="https://en.bitcoin.it/wiki/Elliptic_Curve_Digital_Signature_Algorithm">https://en.bitcoin.it/wiki/Elliptic_Curve_Digital_Signature_Algorithm</a></p>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><p><img src="https://cdn-images-1.medium.com/max/2000/1*2IUCSZbJPtf8jK0XMLS9SQ.jpeg" alt="" /></p>
+<h1 id="how-i-downloaded-big-bang-theory-season-9-in-my-unstable-network"><a class="header" href="#how-i-downloaded-big-bang-theory-season-9-in-my-unstable-network">How I downloaded Big Bang Theory Season 9 in my unstable network.</a></h1>
+<p>I take serious measures to get things right when it comes to downloading TV series. But today, I have been proven wrong. My day goes like this.</p>
+<p>I planned to download Big Bang Theory Season 9 after another exhausting FRIENDS marathon AGAIN. I followed the routine.</p>
+<blockquote>
+<p>Put the torrent magnet on direct-torrents and wait for it to be seeded.</p>
+</blockquote>
+<p>I even clicked the → button and believed it would actually fasten it. But It almost took three hours to be seeded and the file to be available.</p>
+<p>I have a <code>512kbps</code> extremely unstable internet connection. It would take a day to download <code>3GB</code>. I hate downloading files via Chrome because you can never resume a download there. So I use <code>wget</code> and there comes my 2nd problem. The files were served via <em>SSL</em> and so <code>wget</code> kept throwing me <em>403:FORBIDDEN</em>. I tried the download on Chrome and it was working fine. So I made my <code>wget</code> fake the connection that the request was actually from the browser by changing the User-Agent. With a simple <code>wget -U “Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.94 Safari/537.36”</code> the download starts working.</p>
+<blockquote>
+<p>ETA 22 hours.</p>
+</blockquote>
+<p>As I expected, It was going to take a whole day to complete the download. It was midnight and I had to find something to keep me occupied for <em>one whole day which doesn't involve my laptop</em>. Right then, I got a text message.</p>
+<blockquote>
+<p>&quot;Buy 2 Get 3 free&quot;.</p>
+</blockquote>
+<p>Problem Solved. But the bus trip was gonna be boring. So I thought maybe I can download a movie which I could watch on the trip. I deleted Big Bang Theory from the queue in a way that doesn’t affect my download and added FINDING DORY ❤ to the queue. Since the torrent had a high number of seeders, It was instantly available.</p>
+<blockquote>
+<p>ETA 10 hours.</p>
+</blockquote>
+<p>I had to leave the by 6am. So I stopped Big Bang Theory download. But direct-torrents doesn't have a <code>user cache</code>. So I had to seed Big Bang Theory all over again because I deleted it from the queue. I added it to the queue and the movie was downloading without any trouble. Time for a pleasant sleep.</p>
+<blockquote>
+<p>ETA 4 hours. The next day.</p>
+</blockquote>
+<p>I woke up and found FINDING DORY downloaded and Big Bang Theory was ready to be downloaded again. But I had already downloaded some part of that zip file. Thanks to <code>wget -c</code>,it was back on track resuming from the part where I stopped the download. I was going to leave my laptop unattended for a whole day and so I prepared it for the worst. I gave it the lowest display power and lock screen on 5 seconds of inactivity. I could have just closed the lid and went with no suspend but somehow it interfered with my Wi-Fi connection. My laptop can run for 3 hours without power in this setting and that's better than most.</p>
+<p><img src="https://cdn-images-1.medium.com/max/4480/1*SJMEvY9zd_feOEIanxY4nQ.jpeg" alt="No Interruptions /\" /></p>
+<blockquote>
+<p>ETA 18 hours.</p>
+</blockquote>
+<p>I returned home by midnight. I get into my room to check the download. It was at 98% but has become static. This means direct-torrents removed the file as I couldn’t complete the download in a day. So I add the file again and waited for another 3 hours.</p>
+<blockquote>
+<p>ETA 20 minutes.</p>
+</blockquote>
+<p>It was wget time. The download ran for some time and again stopped because of network reset. I use <code>wget -c</code> to get it back and I know the file is still available because if not I would have got a <code>404</code>. The terminal said.</p>
+<pre><code>The file is already fully retrieved; nothing to do.  
+</code></pre>
+<p>But I'm aware the download stopped at 99%. This means I have a broken zip which I am unable to resume.</p>
+<blockquote>
+<p>ETA 10 minutes.</p>
+</blockquote>
+<p>So I thought maybe I could extract the zip file and just download the files that are damaged. Extraction succeeded. Yay!!</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*jymvBMivUcOZwmFmgblANg.png" alt="WTF" /></p>
+<p>The folder contained 48 SRT files alone.</p>
+<p><img src="https://cdn-images-1.medium.com/max/2244/1*eIj1p3rl9izgBl39uMl9Mg.png" alt="" /></p>
+<p>The zip file was clearly <code>3.6GB</code> but the extraction only had 44 SRT files which were merely <code>1.5MB</code>. Back to square 1.</p>
+<blockquote>
+<p>ETA -_- I still didn’t lose hope.</p>
+</blockquote>
+<p>I opened the file in Bless and checked for .mp4 hex. Results found : 72.</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*eE19PS41VY_T6FQDA7lkdw.png" alt="" /></p>
+<p>So Yes, All the episodes were in there but I couldn't extract them.</p>
+<p>I tried to fix the zip file with <code>zip -FF</code> but it just returned me an empty zip file.</p>
+<p><img src="https://cdn-images-1.medium.com/max/2244/1*PsUK7GB2wmYtvqUI3qWqjg.png" alt="Trying to fix it." /></p>
+<p><img src="https://cdn-images-1.medium.com/max/2244/1*xgJlLARsyuAN3SUQxnUQBw.png" alt="" /></p>
+<p>The file wasn't broken but something has gone wrong. I go back to the torrent site to check the file structure. The zip file consisted of all episodes in mp4 and a compressed file of all subtitles.</p>
+<p><img src="https://cdn-images-1.medium.com/max/2824/1*3NCfSAWoi-sbUiR2d7bHqg.png" alt="" /></p>
+<p>Out of options, I tried unzipping the file from the command line with <code>unzip</code>.</p>
+<p><img src="https://cdn-images-1.medium.com/max/2244/1*HhyXwpRM_PmiRYcdi8hWKQ.png" alt="" /></p>
+<p>It threw an error &quot;<code>End-of-central-directory signature not found</code>&quot;.</p>
+<p>The problem was clear now. The file download wasn't completed. When the network reset occurred, the compressed file with subtitles was downloaded. When I tried to resume to download there was an EOF mismatch with both compressed files which made wget think it had fully retrieved the file.That is why on extraction in GUI, I got the 48 srt files and the <code>zip -FF</code> couldn’t fix the zip.</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*AfTpuv_-Eiueco0nexzz6Q.jpeg" alt="AAH! Finally an Explanation." /></p>
+<blockquote>
+<p>ETA 0 minutes.</p>
+</blockquote>
+<p>Time to Google. I checked for file extractors which doesn't check for EOF. After an extensive search and skimming through stack-overflow, I found that jar files were actually inner zip files but don’t have a <code>End-of-central-directory signature</code>.</p>
+<p>I took a leap of faith and tried to extract zip files as how we would extract a jar file using <code>jar -xvf</code>.</p>
+<p><img src="https://cdn-images-1.medium.com/max/2244/1*O_cMzK0UqdcHxmESJ6JQnQ.png" alt="" /></p>
+<p>The mp4 files were extracted one by one and the corrupted file was just the sample mp4. At 4am, I finally downloaded Big Bang Theory season 9 completely.</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*IoyFqCeals3msgo9OPdRgA.jpeg" alt="" /></p>
+<p>To be honest, the season sucked BIG TIME.</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*qxSPFXFYgmi3As8w7Gir2A.jpeg" alt="Just WHY" /></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="markdown-template"><a class="header" href="#markdown-template">Markdown Template</a></h1>
+<ul>
+<li><a href="./template.html#heading">Heading</a></li>
+<li><a href="./template.html#emphasis">Emphasis</a></li>
+<li><a href="./template.html#blockquotes">Blockquotes</a></li>
+<li><a href="./template.html#lists">Lists</a></li>
+<li><a href="./template.html#latex">Latex</a></li>
+<li><a href="./template.html#codes">Codes</a> </li>
+<li><a href="./template.html#tables">Tables</a></li>
+<li><a href="./template.html#links">Links</a></li>
+<li><a href="./template.html#images">Images</a></li>
+<li><a href="./template.html#footnotes">Footnotes</a></li>
+<li><a href="./template.html#task-lists">Task lists</a></li>
+<li><a href="./template.html#blog-specific">Blog Specific</a></li>
+</ul>
+<h1 id="heading"><a class="header" href="#heading">Heading</a></h1>
+<pre><code class="language-markdown"># h1 Heading
+## h2 Heading
+### h3 Heading
+#### h4 Heading
+##### h5 Heading
+###### h6 Heading
+</code></pre>
+<hr />
+<h1 id="h1-heading"><a class="header" href="#h1-heading">h1 Heading</a></h1>
+<h2 id="h2-heading"><a class="header" href="#h2-heading">h2 Heading</a></h2>
+<h3 id="h3-heading"><a class="header" href="#h3-heading">h3 Heading</a></h3>
+<h4 id="h4-heading"><a class="header" href="#h4-heading">h4 Heading</a></h4>
+<h5 id="h5-heading"><a class="header" href="#h5-heading">h5 Heading</a></h5>
+<h6 id="h6-heading"><a class="header" href="#h6-heading">h6 Heading</a></h6>
+<h1 id="emphasis"><a class="header" href="#emphasis">Emphasis</a></h1>
+<pre><code class="language-markdown">**This is bold text**
+
+__This is bold text__
+
+*This is italic text*
+
+_This is italic text_
+
+~~Strikethrough~~
+</code></pre>
+<hr />
+<p><strong>This is bold text</strong></p>
+<p><strong>This is bold text</strong></p>
+<p><em>This is italic text</em></p>
+<p><em>This is italic text</em></p>
+<p><del>Strikethrough</del></p>
+<h2 id="horizontal-rules"><a class="header" href="#horizontal-rules">Horizontal Rules</a></h2>
+<pre><code class="language-markdown">___
+---
+***
+</code></pre>
+<hr />
+<hr />
+<hr />
+<h1 id="blockquotes"><a class="header" href="#blockquotes">Blockquotes</a></h1>
+<pre><code class="language-markdown">&gt; Blockquotes can also be nested...
+&gt;&gt; ...by using additional greater-than signs right next to each other...
+&gt; &gt; &gt; ...or with spaces between arrows.
+</code></pre>
+<hr />
+<blockquote>
+<p>Blockquotes can also be nested...</p>
+<blockquote>
+<p>...by using additional greater-than signs right next to each other...</p>
+<blockquote>
+<p>...or with spaces between arrows.</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h1 id="lists"><a class="header" href="#lists">Lists</a></h1>
+<pre><code class="language-markdown">Unordered
+
++ Create a list by starting a line with `+`, `-`, or `*`
++ Sub-lists are made by indenting 2 spaces:
+  - Marker character change forces new list start:
+    * Ac tristique libero volutpat at
+    + Facilisis in pretium nisl aliquet
+    - Nulla volutpat aliquam velit
++ Very easy!
+
+Ordered
+
+1. Lorem ipsum dolor sit amet
+2. Consectetur adipiscing elit
+3. Integer molestie lorem at massa
+
+1. You can use sequential numbers...
+1. ...or keep all the numbers as `1.`
+
+Start numbering with offset:
+
+57. foo
+1. bar
+</code></pre>
+<hr />
+<p>Unordered</p>
+<ul>
+<li>Create a list by starting a line with <code>+</code>, <code>-</code>, or <code>*</code></li>
+<li>Sub-lists are made by indenting 2 spaces:
+<ul>
+<li>Marker character change forces new list start:
+<ul>
+<li>Ac tristique libero volutpat at</li>
+</ul>
+<ul>
+<li>Facilisis in pretium nisl aliquet</li>
+</ul>
+<ul>
+<li>Nulla volutpat aliquam velit</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Very easy!</li>
+</ul>
+<p>Ordered</p>
+<ol>
+<li>
+<p>Lorem ipsum dolor sit amet</p>
+</li>
+<li>
+<p>Consectetur adipiscing elit</p>
+</li>
+<li>
+<p>Integer molestie lorem at massa</p>
+</li>
+<li>
+<p>You can use sequential numbers...</p>
+</li>
+<li>
+<p>...or keep all the numbers as <code>1.</code></p>
+</li>
+</ol>
+<p>Start numbering with offset:</p>
+<ol start="57">
+<li>foo</li>
+<li>bar</li>
+</ol>
+<h1 id="latex"><a class="header" href="#latex">Latex</a></h1>
+<pre><code class="language-markdown">* Inline equations are replaced with `\\(` *text* `\\)`
+
+```
+    \\( \mathbb{N} = \{ a \in \mathbb{Z} : a &gt; 0 \} \\)
+```
+
+\\(\mathbb{N} = \{ a \in \mathbb{Z} : a &gt; 0 \}\\)
+
+* Block equations are replaced with `\\[` *text* `\\]`
+
+```
+    \\[ \mathbb{N} = \{ a \in \mathbb{Z} : a &gt; 0 \} \\]
+```
+
+\\[\mathbb{N} = \{ a \in \mathbb{Z} : a &gt; 0 \}\\]
+
+</code></pre>
+<hr />
+<ul>
+<li>Inline equations are replaced with <code>\\(</code> <em>text</em> <code>\\)</code></li>
+</ul>
+<pre><code>    \\( \mathbb{N} = \{ a \in \mathbb{Z} : a &gt; 0 \} \\)
+</code></pre>
+<p>\(\mathbb{N} = { a \in \mathbb{Z} : a &gt; 0 }\)</p>
+<ul>
+<li>Block equations are replaced with <code>\\[</code> <em>text</em> <code>\\]</code></li>
+</ul>
+<pre><code>    \\[ \mathbb{N} = \{ a \in \mathbb{Z} : a &gt; 0 \} \\]
+</code></pre>
+<p>\[\mathbb{N} = { a \in \mathbb{Z} : a &gt; 0 }\]</p>
+<h1 id="codes"><a class="header" href="#codes">Codes</a></h1>
+<pre><code class="language-markdown">Inline ` code `
+
+Indented code
+
+    // Some comments
+    line 1 of code
+    line 2 of code
+    line 3 of code
+
+
+Block code &quot;fences&quot;
+
+```
+Sample text here...
+```
+
+Syntax highlighting
+
+```  js
+var foo = function (bar) {
+  return bar++;
+};
+
+console.log(foo(5));
+```
+
+[Rust specific mdbook configuration](https://rust-lang.github.io/mdBook/format/mdbook.html)
+</code></pre>
+<hr />
+<p>Inline <code>code</code></p>
+<p>Indented code</p>
+<pre><code>// Some comments
+line 1 of code
+line 2 of code
+line 3 of code
+</code></pre>
+<p>Block code &quot;fences&quot;</p>
+<pre><code>Sample text here...
+</code></pre>
+<p>Syntax highlighting</p>
+<pre><code class="language-js">var foo = function (bar) {
+  return bar++;
+};
+
+console.log(foo(5));
+</code></pre>
+<p><a href="https://rust-lang.github.io/mdBook/format/mdbook.html">Rust specific mdbook configuration</a></p>
+<h1 id="tables"><a class="header" href="#tables">Tables</a></h1>
+<pre><code class="language-markdown">| Option | Description |
+| ------ | ----------- |
+| data   | path to data files to supply the data that will be passed into templates. |
+| engine | engine to be used for processing templates. Handlebars is the default. |
+| ext    | extension to be used for dest files. |
+
+Right aligned columns
+
+| Option | Description |
+| ------:| -----------:|
+| data   | path to data files to supply the data that will be passed into templates. |
+| engine | engine to be used for processing templates. Handlebars is the default. |
+| ext    | extension to be used for dest files. |
+</code></pre>
+<hr />
+<div class="table-wrapper"><table><thead><tr><th>Option</th><th>Description</th></tr></thead><tbody>
+<tr><td>data</td><td>path to data files to supply the data that will be passed into templates.</td></tr>
+<tr><td>engine</td><td>engine to be used for processing templates. Handlebars is the default.</td></tr>
+<tr><td>ext</td><td>extension to be used for dest files.</td></tr>
+</tbody></table>
+</div>
+<p>Right aligned columns</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: right">Option</th><th style="text-align: right">Description</th></tr></thead><tbody>
+<tr><td style="text-align: right">data</td><td style="text-align: right">path to data files to supply the data that will be passed into templates.</td></tr>
+<tr><td style="text-align: right">engine</td><td style="text-align: right">engine to be used for processing templates. Handlebars is the default.</td></tr>
+<tr><td style="text-align: right">ext</td><td style="text-align: right">extension to be used for dest files.</td></tr>
+</tbody></table>
+</div>
+<h1 id="links"><a class="header" href="#links">Links</a></h1>
+<pre><code class="language-markdown">[link text](http://dev.nodeca.com)
+
+[link with title](http://nodeca.github.io/pica/demo/ &quot;title text!&quot;)
+
+Autoconverted link https://github.com/nodeca/pica (enable linkify to see)
+
+</code></pre>
+<hr />
+<p><a href="http://dev.nodeca.com">link text</a></p>
+<p><a href="http://nodeca.github.io/pica/demo/" title="title text!">link with title</a></p>
+<p>Autoconverted link https://github.com/nodeca/pica (enable linkify to see)</p>
+<h1 id="images"><a class="header" href="#images">Images</a></h1>
+<pre><code class="language-markdown">![Minion](https://octodex.github.com/images/minion.png)
+</code></pre>
+<hr />
+<p><img src="https://octodex.github.com/images/minion.png" alt="Minion" /></p>
+<h1 id="footnotes"><a class="header" href="#footnotes"><a href="https://github.com/markdown-it/markdown-it-footnote">Footnotes</a></a></h1>
+<pre><code class="language-markdown">Footnote 1 link[^first].
+
+Footnote 2 link[^second].
+
+Inline footnote^[Text of inline footnote] definition.
+
+Duplicated footnote reference[^second].
+
+[^first]: Footnote **can have markup**
+
+    and multiple paragraphs.
+
+[^second]: Footnote text.
+</code></pre>
+<hr />
+<p>Footnote 1 link<sup class="footnote-reference"><a href="#first">1</a></sup>.</p>
+<p>Footnote 2 link<sup class="footnote-reference"><a href="#second">2</a></sup>.</p>
+<p>Inline footnote^[Text of inline footnote] definition.</p>
+<p>Duplicated footnote reference<sup class="footnote-reference"><a href="#second">2</a></sup>.</p>
+<div class="footnote-definition" id="first"><sup class="footnote-definition-label">1</sup>
+<p>Footnote <strong>can have markup</strong></p>
+</div>
+<pre><code>and multiple paragraphs.
+</code></pre>
+<div class="footnote-definition" id="second"><sup class="footnote-definition-label">2</sup>
+<p>Footnote text.</p>
+</div>
+<h1 id="task-lists"><a class="header" href="#task-lists">Task Lists</a></h1>
+<pre><code class="language-markdown">Task lists can be used as a checklist of items that have been completed.
+Example:
+
+```
+- [x] Complete task
+- [ ] Incomplete task
+```
+
+This will render as:
+
+&gt; - [x] Complete task
+&gt; - [ ] Incomplete task
+</code></pre>
+<hr />
+<p>Task lists can be used as a checklist of items that have been completed.
+Example:</p>
+<pre><code>- [x] Complete task
+- [ ] Incomplete task
+</code></pre>
+<p>This will render as:</p>
+<blockquote>
+<ul>
+<li><input disabled="" type="checkbox" checked=""/>
+Complete task</li>
+<li><input disabled="" type="checkbox"/>
+Incomplete task</li>
+</ul>
+</blockquote>
+<h1 id="blog-specific"><a class="header" href="#blog-specific">Blog Specific</a></h1>
+<p>Things to figure out </p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+How to add date / time for the blog. Shortcut for adding current time</li>
+<li><input disabled="" type="checkbox"/>
+Adding the coffee place and template</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="public-keys"><a class="header" href="#public-keys">Public Keys</a></h1>
+<h2 id="ssh-pub-rsa"><a class="header" href="#ssh-pub-rsa">SSH Pub RSA</a></h2>
+<pre><code>ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQChqdy+sOVrlucDhDljC+t+5FPgSqC9PgFJiDmFOGxPCBej5ADaqnoMgPxXLIaU7DxGQ3Go1unkYAJnypFyHIzQHL04uELjkOYJEB0qAfpYj0EZiSVHI2grPu+3F8v4gt/U/K0l8xz2tvIY13N2b5VhAso53GzfICkF+5pauf7YBRVX/nrs7LJxV/bUmjQOGbmrIxZDwJet070mSuRU3ajMFaahwmTsBotF2d+fL8xpIJnEOikwPu8OZnN4ClUJIThZ/17FxRfEmbeSg6NyGKabCigRi1/EwoscTlhlp1EOaTGjo2vwE9/DvJNEhQWAr2QtbIRqzMj0TIiEc12bqK3bYFxQC/gbceo9B+s6eT9dj1PQedKFUmj78LTrUoINE1vhxuM00EwBYocc4tLqQroLS/VfZvPddMQ0wFrB5/fY54Ji51SVpqneEXWC0cwrXtjdnC9XJm1ArsTbcAgCTh5kOJmK6+8AZRgFm09Cgd6YxAO0p1r90rsFVp5rcUgHtGDHz1EoP8RVycs2COxoYdZYVC7LOfnxdcovrvTSDrFRvQmr9VkcdA4BaJB53A7fEUw7SG6cqVy6Pd4EdvIXek91gA83HEjSnK+TgoRYiblL9Lq8ZHXjNwNK7PqXTaESIOjzuZN/ECut0HDZmMFVZKeiF3G31r/cb+JKf4g1ta6uxQ== venkythesupersaiyan@gmail.com
+</code></pre>
+<h2 id="ssh-pub-ed25519"><a class="header" href="#ssh-pub-ed25519">SSH Pub ED25519</a></h2>
+<pre><code>ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHS16h0N5RIhEGV3xtFYvbxrh09K4sm2aLocGDD51oBM venkkatesh.sekar@gmail.com
+</code></pre>
+<h2 id="gpg-pub-personal"><a class="header" href="#gpg-pub-personal">GPG Pub (Personal)</a></h2>
+<pre><code>-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+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
+uLwaa+tYHEAIwB7iDD3T9chiWgUAsdE=
+=VDIH
+-----END PGP PUBLIC KEY BLOCK-----
+</code></pre>
+<h2 id="gpg-pub-official"><a class="header" href="#gpg-pub-official">GPG Pub (Official)</a></h2>
+<pre><code>-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+mQINBF3BfpwBEAC0Vt20c5AXsbIVldwevBCSub5IsJkIyQyVqHsGlrRy2lvye7bc
+GrQn8BIDCjcCRgTXatTMuXQ9L/lb+/jXDKApGatdC86I4cotXa8NvjAuBQrkdbzJ
+veFGJMvi+MNPcWBhn+e28MU0g6c8cvFL4U/fNP+dTMqU8S4HWq8pw3YU0AKi/amm
+8RMGjx9ZBxquY1STcww0/NTZvzeUcEROwtcmlohZgrMfc27VON49l5v8A4kG0dP7
+8hVwvzMkK9NhwTPdXvaxYKMB6dIYS7VuYZogWRlUuzK8ayiZ/x9ckfjn40RMtbzo
+3vyeKImhEK1FAjk4s2ldwb9bWMkf8/9kj9mT9356wUC6Y3sT2X9EgVDBVFr9cWZT
+XfC52tlW3iJjygt7tlkD1ZftnNhAzPz79qpGn+YU0qetoz0+klp8rSf2wqFy0kIT
++SDKK2Pvd0QMo41RDTVmorJQvUca7eDJWiwmJeCkjgMN5zHex3JQIc5KLwgQB/pz
+y4HgvDBlXLSwfPyc1DquEGD31m4dMogE+5vSJqVmUEF2DfT4C9zlhgSg3QMGBCTp
+XaHevwzbRDkf4xtdtfluONnbEj9hpmNIvXY6xv/0ZVHMfeqJE6NytcyUTeuSkX/B
+5iuymnBn61NC6S1iFV9gsDihyvx2HFm+Hm6AsYg1Wy1CWoRo2TWmJfMLOQARAQAB
+tDhWZW5ra2F0ZXNoIFNla2FyIChPZmZpY2lhbCkgPHZlbmtrYXRlc2guc2VrYXJA
+Z21haWwuY29tPokCTgQTAQoAOBYhBNLqj2fG2knmZPSc2tUrTRlQqDHABQJdwX6c
+AhsDBQsJCAcCBhUKCQgLAgQWAgMBAh4BAheAAAoJENUrTRlQqDHAGRIQAKLH8+rL
+Lm03C6unpbwvK3va7uzn010mbGbfHLJFUQUMwxmVkudWRVdaT1FYyEOo56atMusv
+lMGqXo4GK1rPn7Yl2909gnQgMIpVI0sgUfe9pnnQ3He7O5pemQhWjo+dXHyfVxc+
+M+23BBv30Rrfj8wR0IFixyguMPNvannAbrgpU+z31p0VPtfRVr972uOlCvY9SZqa
+uukoQyzegnaWQYzvfr1pzi4cN/E8YgTLTSBs4kwvVrauhKVX/b2Ypw7ltatk0gF6
+yUWhrHnl8duSBHrcre4VnCrCA+Z90JMSduytC8PtE2tjyJC0rwGgCcucsNNS48Q4
+391pOpTYY4bNlivYL4gJq34+ZgtI2Z3T3D9HlZJdjtgceCVOSwq8V31phQVz+k+L
+4aP0s3HSSRZtYx91711eApaz22JfESWojBouHCSDo+zKDydtjDICLPxMsVl/PSNT
+N3kui2sXKFyeVNGMjB37HlrO4C52C1ZCd6ckvR/PNRzDPAEjWNui9o7qjmXEVXHp
+gRRvaSrDETs4d9NBFRzXlUpDDvuCPIlwYMYPZ+WGwsZy/mEmeWOw0VURkyLtveOc
+nwoM0n/FrGMNnjJUbcezxaJQ73V0rPToXs1AluejYD139s3L0rP3H/TqgaOgEe/z
+GQ7uCcWZFfCk6MprZKIJivKBa6/OeccowCluuQINBF3BfpwBEADYDy8UDuY2qRTe
+/E5AVeL1sFgcvEsSrzDFj+5BpEEilFMhjDsp9oX5OKmPL4i8oRbtaBbBTzJ5UB06
+wFilqD4xD9eZjDzMBWzOqTN0O0qrq7AFWF5i3Xh8hni11Ir8N7pgJFItNorM3nZA
+wpB0+EDqy6K25I3QOwaJIUjkW9jx3W9Bl1u0SL6jNPW2msvd0+U2RYTEsPFeML2f
+Nlavh0n/zG9erjh4dtSvdv6g/henFcLO59q0QGQNN0s3hKiqEkRQ4SlgIbFuDfeM
+TyrBRI/SNYVOIKV9Ttht4eMJsHzQxGo1esimSve2jIKHtvBHcdQka97y7kEK6boM
+El3nmF31tyDrpg1C95sdAaCym4kFK+lo9ApBgVEdjNZIn0TKCZ/uCcxgPVabI6s4
+2TFDKVXyIGF8AOJL/oAYozEfa4tWkM6VO2x0ia+toPn0GrV6r5SeMBoss1jObdP5
+nYIxhaYsVv2oDsyRuCNGs4j+7+MsWckjS0rkvKk/MG07sWepnKh/HbgYC+y+sFxl
+5Ju+RqppXu8ErdEVI7ZmSBku+Uk3Y2Il8WS64c5/wIpJVTzvPV+Wui02QzsLYEQF
+QUUjNEgYohrFpiShWmow1rHLemKyq780kIjd3yMjznL507SI0p0rrWqeeYDWeZjs
+1a3bk5fhczYWmhlB02D4A2UMi4CFnQARAQABiQI2BBgBCgAgFiEE0uqPZ8baSeZk
+9Jza1StNGVCoMcAFAl3BfpwCGwwACgkQ1StNGVCoMcBcdg/+NfbLREUkuHGKxDQU
+gWEhjvXFfEuIsCmJcWhLCORjYB0lDc2kUcuuzz0t6xpzxjq577UBl92NcshL3BcZ
+42qYPH31DQeQ1vQlJZjGVGcxmhuEJ6mKyu/8Ip9Lfhsf5OHfdjgir3E4EjS07Fo8
+wHou+TwWin0OOE3K9e7HjL7yUct+STY8kun+I575hyn33NxiyLxwHNiKU6uUzdd3
+Gh/DipSL6klOEFLP5R12iOn4PCDdzbIM3OTgRBUHs5ZMTlS6ZCvGiaVdzDHhYoCU
+REUkx6yx6ficU64F5DaesArdeBw1NaCH4oJADis5Ss7Tn2vE+BzXkUqtXq/ZMReq
+6+YcOyAd6d7l2gNk4FKB1bUap96UUOds8iw0yNsWl2Ie+QKrA5Z+UNoHcRS1VH4P
+Exg9Bcxca6nNq4zC2FuzKocsaC8sBcqcq00R0CI/ZUKY6C5t+rYD/BTXB4hjpxY1
+2rjjg2M7jAq+UmiOtjXPwxdv3ypGGVkEKGi0LbKYML7ldlMLxNlQyfcIQlnIXxaG
+uu2hiUaEfGmE8ZX+iNLCMFaoSlbVagLAkw16ldj3Kkckw80lMxjCrFjEpV42N4wN
+WmqPqLGdYcTEngPUo0zEuuIEYbAaWHxOmhEGZk0f3RQ7L0s5EdIeFtDN9XaOlTbb
+oM5b6VLElyNwCqSgyjFL+MT29+0=
+=RTzK
+-----END PGP PUBLIC KEY BLOCK-----    
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            MathJax.Hub.Register.StartupHook('End', function() {
+                window.setTimeout(window.print, 100);
+            });
+        });
+        </script>
+
+    </body>
+</html>
