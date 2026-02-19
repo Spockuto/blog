@@ -1,7 +1,6 @@
 [book]
 authors = ["Spockuto"]
 language = "en"
-multilingual = false
 src = "src"
 title = "log_coffee!"
 
@@ -10,14 +9,9 @@ default-theme = "ayu"
 preferred-dark-theme = "ayu"
 mathjax-support = true
 no-section-label = true
-additional-css = ["custom.css" , "./theme/catppuccin.css", "./theme/catppuccin-highlight.css"]
+additional-css = ["custom.css"]
 git-repository-url = "https://github.com/Spockuto/blog"
-git-repository-icon = "fa-github"
+git-repository-icon = "fas-code-fork"
 
 [output.html.search]
 limit-results = 15
-
-[preprocessor]
-
-[preprocessor.catppuccin]
-assets_version = "0.1.1" # DO NOT EDIT: Managed by `mdbook-catppuccin install`
