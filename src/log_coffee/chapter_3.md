@@ -80,14 +80,18 @@ But what do the LLMs think?
 
 | LLM | Panic or No Panic |
 | :--- | :---: |
-| ChatGPT | [✅ Panic](chapter_3.md#chatgpt---panic) |
-| Claude | [✅ Panic](chapter_3.md#claude---panic) |
-| DeepSeek | [✅ Panic](chapter_3.md#deepseek---panic) |
-| Gemini | [❌ No Panic](chapter_3.md#gemini---no-panic) |
+| ChatGPT GPT 5.2| [✅ Panic](chapter_3.md#chatgpt-gpt-52---panic) |
+| Claude Sonnet 4.5 | [✅ Panic](chapter_3.md#claude-sonnet-45---panic) |
+| Claude Sonnet 4.6 | [❌ No Panic](chapter_3.md#claude-sonnet-46---no-panic) |
+| DeepSeek v3.2 | [✅ Panic](chapter_3.md#deepseek-v32---panic) |
+| Gemini 3 Pro | [✅ Panic](chapter_3.md#gemini-3-pro---panic) |
+| Gemini 3.1 Pro | [❌ No Panic](chapter_3.md#gemini-31-pro---no-panic) |
 | Grok | [✅ Panic](chapter_3.md#grok---panic) |
 | Kimi K2.5 | [✅ Panic](chapter_3.md#kimi-k25---panic) |
 
-## ChatGPT - Panic!
+---
+
+## ChatGPT GPT 5.2 - Panic!
 
 [Link to chat](https://chatgpt.com/s/t_69973d6e36ac819181abfad956fac380)
 
@@ -160,7 +164,7 @@ This produces an empty slice because the start equals the end.
 ✅ **Yes, it panics at runtime** because the slice range `1..=0` is invalid (start > end).
 
 
-## Claude - Panic!
+## Claude Sonnet 4.5 - Panic!
 
 [Link to chat](https://claude.ai/share/da815848-04e3-4448-b0ea-f12a62f18736)
 
@@ -182,7 +186,27 @@ If you wanted an empty slice, you could use:
 
 But `&s[1..=0]` is invalid because inclusive ranges cannot have start > end.
 
-## DeepSeek - Panic!
+## Claude Sonnet 4.6 - no Panic!
+
+[Link to chat](https://claude.ai/share/053d6a95-176f-4961-8b8e-8bf870721c8f)
+
+This will **not panic** — it prints `[]`.
+
+The range `1..=0` is an empty range (since the end is less than the start in an inclusive range). Rust's slice indexing accepts empty ranges like this as long as the bounds are within the valid index range for the slice, and `1` is a valid index into a 32-element vector.
+
+If you tried `1..=0` on an empty vector or `33..=32` (out of bounds), *that* would panic. But here, `1` is within bounds, so Rust happily returns an empty slice.
+
+You can verify:
+```rust
+fn main() {
+    let s: Vec<u8> = vec![0u8; 32];
+    println!("{:?}", &s[1..=0]); // prints: []
+}
+```
+
+Interestingly, `0..0` (exclusive) also gives `[]`, but `2..=1` would also work fine for the same reason — the bounds are checked individually against the slice length, not against each other.
+
+## DeepSeek v3.2 - Panic!
 
 [Link to chat](https://chat.deepseek.com/share/yubn6o4lbjxed0il61)
 
@@ -215,11 +239,37 @@ Even though the vector has 32 elements (indices 0-31), the slice operation fails
 
 The only non-panicking behavior with invalid ranges occurs with exclusive ranges (`..`) where an empty range is valid (e.g., `&s[1..1]` would give an empty slice without panicking).
 
-## Gemini - no Panic!
+## Gemini 3 Pro - Panic!
+
+[Link to chat](https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221Xpj_584sFeZBwpHX3cwQ_MbHPYZJ_zyd%22%5D,%22action%22:%22open%22,%22userId%22:%22116685706711200745427%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing)
+
+> Google rolled out Gemini 3.1 Pro as I was writing this, so Gemini 3 Pro replication is done on AI studio. 
+
+**Yes, this code will panic at runtime.**
+
+Specifically, it will panic with a message similar to:
+
+```text
+thread 'main' panicked at 'slice index starts at 1 but ends at 0', src/main.rs:4:20
+```
+
+### Why?
+
+When you slice a vector (or array) in Rust, the range must be valid.
+
+1.  **Exclusive Range (`start..end`):** The slice is empty if `start == end`. It panics if `start > end`.
+2.  **Inclusive Range (`start..=end`):** This syntax implies that the slice must contain indices from `start` up to **and including** `end`.
+
+In your code, you requested `1..=0`. Since the start index (`1`) is greater than the end index (`0`), Rust considers this an invalid range for slicing and panics to prevent logic errors.
+
+If you wanted an empty slice starting at 1, you should use an exclusive range:
+```rust
+&s[1..1] // This is valid (empty slice)
+```
+
+## Gemini 3.1 Pro - no Panic!
 
 [Link to chat](https://g.co/gemini/share/d3ab1deaf0a4)
-
-> When I initially performed the test, [Gemini did indeed say it would panic!](https://pbs.twimg.com/media/HBcPI0VWYAA5KWQ?format=jpg&name=large). However, it was on an account whose settings did not allow me to share the chat, and repeating the test on new accounts has always yielded no panic. Interpret this however you will.
 
 The short answer: **No, it will not panic.**
 
