@@ -1,0 +1,349 @@
+<!DOCTYPE HTML>
+<html lang="en" class="ayu sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Keys - log_coffee!</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-2459343d.css">
+        <link rel="stylesheet" href="css/chrome-ae938929.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="custom-8592d182.css">
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "ayu";
+            const default_dark_theme = "ayu";
+            window.path_to_searchindex_js = "searchindex-b9faea2e.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc-859ffaa9.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('ayu')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">log_coffee!</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/Spockuto/blog" title="Git repository" aria-label="Git repository">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M80 104c13.3 0 24-10.7 24-24s-10.7-24-24-24S56 66.7 56 80s10.7 24 24 24zm80-24c0 32.8-19.7 61-48 73.3V192c0 17.7 14.3 32 32 32H304c17.7 0 32-14.3 32-32V153.3C307.7 141 288 112.8 288 80c0-44.2 35.8-80 80-80s80 35.8 80 80c0 32.8-19.7 61-48 73.3V192c0 53-43 96-96 96H256v70.7c28.3 12.3 48 40.5 48 73.3c0 44.2-35.8 80-80 80s-80-35.8-80-80c0-32.8 19.7-61 48-73.3V288H144c-53 0-96-43-96-96V153.3C19.7 141 0 112.8 0 80C0 35.8 35.8 0 80 0s80 35.8 80 80zm208 24c13.3 0 24-10.7 24-24s-10.7-24-24-24s-24 10.7-24 24s10.7 24 24 24zM248 432c0-13.3-10.7-24-24-24s-24 10.7-24 24s10.7 24 24 24s24-10.7 24-24z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="public-keys"><a class="header" href="#public-keys">Public Keys</a></h1>
+<h2 id="ssh-pub-rsa"><a class="header" href="#ssh-pub-rsa">SSH Pub RSA</a></h2>
+<pre><code>ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQChqdy+sOVrlucDhDljC+t+5FPgSqC9PgFJiDmFOGxPCBej5ADaqnoMgPxXLIaU7DxGQ3Go1unkYAJnypFyHIzQHL04uELjkOYJEB0qAfpYj0EZiSVHI2grPu+3F8v4gt/U/K0l8xz2tvIY13N2b5VhAso53GzfICkF+5pauf7YBRVX/nrs7LJxV/bUmjQOGbmrIxZDwJet070mSuRU3ajMFaahwmTsBotF2d+fL8xpIJnEOikwPu8OZnN4ClUJIThZ/17FxRfEmbeSg6NyGKabCigRi1/EwoscTlhlp1EOaTGjo2vwE9/DvJNEhQWAr2QtbIRqzMj0TIiEc12bqK3bYFxQC/gbceo9B+s6eT9dj1PQedKFUmj78LTrUoINE1vhxuM00EwBYocc4tLqQroLS/VfZvPddMQ0wFrB5/fY54Ji51SVpqneEXWC0cwrXtjdnC9XJm1ArsTbcAgCTh5kOJmK6+8AZRgFm09Cgd6YxAO0p1r90rsFVp5rcUgHtGDHz1EoP8RVycs2COxoYdZYVC7LOfnxdcovrvTSDrFRvQmr9VkcdA4BaJB53A7fEUw7SG6cqVy6Pd4EdvIXek91gA83HEjSnK+TgoRYiblL9Lq8ZHXjNwNK7PqXTaESIOjzuZN/ECut0HDZmMFVZKeiF3G31r/cb+JKf4g1ta6uxQ== venkythesupersaiyan@gmail.com
+</code></pre>
+<h2 id="ssh-pub-ed25519"><a class="header" href="#ssh-pub-ed25519">SSH Pub ED25519</a></h2>
+<pre><code>ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHS16h0N5RIhEGV3xtFYvbxrh09K4sm2aLocGDD51oBM venkkatesh.sekar@gmail.com
+</code></pre>
+<h2 id="gpg-pub-personal"><a class="header" href="#gpg-pub-personal">GPG Pub (Personal)</a></h2>
+<pre><code>-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+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
+uLwaa+tYHEAIwB7iDD3T9chiWgUAsdE=
+=VDIH
+-----END PGP PUBLIC KEY BLOCK-----
+</code></pre>
+<h2 id="gpg-pub-official"><a class="header" href="#gpg-pub-official">GPG Pub (Official)</a></h2>
+<pre><code>-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+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
+oM5b6VLElyNwCqSgyjFL+MT29+0=
+=RTzK
+-----END PGP PUBLIC KEY BLOCK-----    
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="template.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="template.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-c2a407aa.js"></script>
+
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>
