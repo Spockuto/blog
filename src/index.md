@@ -1,4 +1,7 @@
 # log_coffee!
++ Apr 11, 2026 [Strong First or Weak First?](./log_coffee/chapter_6.md)
++ Apr 11, 2026 [Reading ZIPs Without Downloading Them](./log_coffee/chapter_5.md)
++ Apr 11, 2026 [It's Not Lupus — Diagnosing with House MD Data](./log_coffee/chapter_4.md)
 + Feb 19, 2026 [The Rust Strawberry test](./log_coffee/chapter_3.md)
 + Jun 21, 2023 [Sweet Jesus, Pooh! That's Not Honey! - You're Eating Recursion!](./log_coffee/chapter_2.md) 
 + Apr 29, 2023 [Why u so mean?](./log_coffee/chapter_1.md) 

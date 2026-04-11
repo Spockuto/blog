@@ -1,11 +1,381 @@
+/* ─────────────────────────────────────────────
+   log_coffee! — UI_SPEC theme adaptation
+   dark, monospace, minimal
+   ───────────────────────────────────────────── */
+
+/* === fonts === */
+
 @font-face {
-    font-family: 'IBM Plex Mono';
-    font-style: normal;
-    font-weight: 400;
-    src: url(https://fonts.gstatic.com/s/ibmplexmono/v12/-F63fjptAgt5VM-kVkqdyU8n1i8q1w.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/ibmplexmono/v12/-F63fjptAgt5VM-kVkqdyU8n1i8q1w.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  src: url(https://fonts.gstatic.com/s/ibmplexmono/v12/-F6qfjptAgt5VM-kVkqdyU8n3twJ0n1g.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://fonts.gstatic.com/s/ibmplexmono/v12/-F6qfjptAgt5VM-kVkqdyU8n3oQO0n1g.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: italic;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/ibmplexmono/v12/-F6pfjptAgt5VM-kVkqdyU8n1ioa1n1g.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* === ayu theme variable overrides === */
+
+.ayu {
+  /* backgrounds */
+  --bg: #0a0a0a;
+  --fg: #e0e0e0;
+
+  /* sidebar */
+  --sidebar-bg: #111111;
+  --sidebar-fg: #aaaaaa;
+  --sidebar-non-existant: #444444;
+  --sidebar-active: #ffffff;
+  --sidebar-spacer: #222222;
+  --sidebar-header-border-color: #444444;
+
+  --scrollbar: #2a2a2a;
+
+  /* chrome */
+  --icons: #444444;
+  --icons-hover: #e0e0e0;
+
+  /* links — white accent */
+  --links: #e0e0e0;
+
+  /* inline code */
+  --inline-code-color: #aaaaaa;
+
+  /* theme popup */
+  --theme-popup-bg: #111111;
+  --theme-popup-border: #222222;
+  --theme-hover: #181818;
+
+  /* blockquotes */
+  --quote-bg: #111111;
+  --quote-border: #222222;
+
+  /* tables */
+  --table-border-color: #222222;
+  --table-header-bg: #181818;
+  --table-alternate-bg: #0f0f0f;
+
+  /* search */
+  --searchbar-border-color: #222222;
+  --searchbar-bg: #111111;
+  --searchbar-fg: #e0e0e0;
+  --searchbar-shadow-color: #222222;
+  --searchresults-header-fg: #666666;
+  --searchresults-border-color: #222222;
+  --searchresults-li-bg: #181818;
+  --search-mark-bg: #2a2a2a;
+
+  --warning-border: #f87171;
+
+  --copy-button-filter: invert(40%) brightness(80%);
+  --copy-button-filter-hover: invert(100%);
+
+  --footnote-highlight: #444444;
+  --overlay-bg: rgba(0, 0, 0, 0.7);
+
+  --blockquote-note-color: #aaaaaa;
+  --blockquote-tip-color: #4ade80;
+  --blockquote-important-color: #aaaaaa;
+  --blockquote-warning-color: #f87171;
+  --blockquote-caution-color: #f87171;
+}
+
+/* === global typography === */
+
+:root {
+  --mono-font: 'IBM Plex Mono', monospace;
 }
 
 html {
-    font-family: 'IBM Plex Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-size: 1.5rem;
+}
+
+/* all text inherits monospace */
+.sidebar-iframe-inner,
+.content,
+.content p,
+.content ol,
+.content ul,
+.content a,
+.content h1,
+.content h2,
+.content h3,
+.content h4,
+.content h5,
+.content h6,
+table,
+input,
+button,
+.menu-title {
+  font-family: 'IBM Plex Mono', monospace !important;
+}
+
+/* === content typography === */
+
+.content p,
+.content ol,
+.content ul {
+  line-height: 1.7;
+  color: #aaaaaa;
+}
+
+.content h1 {
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: #e0e0e0;
+}
+
+.content h2 {
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: #e0e0e0;
+  border-bottom: 1px solid #222222;
+  padding-bottom: 0.3em;
+}
+
+.content h3,
+.content h4 {
+  font-weight: 500;
+  color: #e0e0e0;
+}
+
+/* links — subtle, no underline until hover */
+.content a:link,
+.content a:visited {
+  color: #e0e0e0;
+  text-decoration: none;
+  border-bottom: 1px solid #444444;
+  transition: border-color 0.15s;
+}
+
+.content a:hover {
+  text-decoration: none;
+  border-bottom-color: #e0e0e0;
+}
+
+/* === code === */
+
+code {
+  font-family: 'IBM Plex Mono', monospace !important;
+}
+
+:not(pre) > .hljs {
+  background-color: #181818;
+  border: 1px solid #222222;
+  border-radius: 3px;
+  padding: 0.1em 0.35em;
+}
+
+pre {
+  border-radius: 6px;
+  border: 1px solid #222222;
+}
+
+pre > code {
+  background-color: #111111;
+  border-radius: 6px;
+}
+
+/* copy button */
+pre > .buttons button {
+  border-color: #222222;
+  background-color: #111111;
+  color: #444444;
+}
+
+pre > .buttons button:hover {
+  color: #e0e0e0;
+  border-color: #444444;
+  background-color: #181818;
+}
+
+/* === tables === */
+
+table {
+  border: 1px solid #222222;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+table td {
+  padding: 6px 16px;
+  border-color: #222222;
+  font-size: 0.9em;
+}
+
+table thead {
+  background: #181818;
+}
+
+table thead th {
+  padding: 8px 16px;
+  font-weight: 500;
+  font-size: 0.85em;
+  color: #666666;
+  text-align: left;
+}
+
+table thead tr {
+  border-color: #222222;
+}
+
+table tbody tr:nth-child(2n) {
+  background: #0f0f0f;
+}
+
+/* === blockquotes === */
+
+blockquote {
+  border-block-start: 1px solid #222222;
+  border-block-end: 1px solid #222222;
+  background-color: #111111;
+}
+
+/* === mark / highlight === */
+
+mark {
+  background-color: #222222;
+  color: #ffffff;
+  border-radius: 3px;
+  padding: 0.1em 0.3em;
+}
+
+/* === sidebar === */
+
+.sidebar-iframe-inner {
+  font-size: 1.3rem;
+}
+
+.chapter li a {
+  color: #aaaaaa;
+  transition: color 0.15s;
+}
+
+.chapter li a:hover {
+  color: #ffffff;
+}
+
+.chapter li a.active {
+  color: #ffffff;
+}
+
+/* === menu bar === */
+
+#mdbook-menu-bar {
+  border-block-end-color: #222222;
+}
+
+#mdbook-menu-bar.bordered {
+  border-block-end-color: #222222;
+}
+
+.menu-title {
+  font-weight: 400;
+  font-size: 1.6rem;
+  letter-spacing: -0.02em;
+  color: #666666;
+}
+
+/* === search === */
+
+#mdbook-searchbar {
+  border-radius: 6px;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+/* === nav arrows === */
+
+.nav-chapters:hover {
+  background-color: #111111;
+}
+
+/* === scrollbar === */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2a2a2a;
+  border-radius: 3px;
+}
+
+/* === hide theme toggle (dark-only) === */
+
+#theme-toggle {
+  display: none;
+}
+
+/* === katex === */
+
+/* display equation blocks — matches calculator .eq-block */
+.katex-display {
+  background: #0a0a0a;
+  border: 1px solid #222222;
+  border-radius: 6px;
+  padding: 0.75em 1em !important;
+  margin: 0.75em 0 !important;
+  overflow-x: auto;
+  text-align: center;
+}
+
+/* math inherits body text color — no forced bright override */
+.katex {
+  color: inherit;
+}
+
+/* === misc === */
+
+.tooltiptext {
+  font-family: 'IBM Plex Mono', monospace;
+  background-color: #181818;
+  border: 1px solid #222222;
+  border-radius: 6px;
+}
+
+/* subtle horizontal rules */
+hr {
+  border: none;
+  border-top: 1px solid #222222;
+  margin: 2em 0;
+}
+
+/* mobile adjustments */
+@media (max-width: 500px) {
+  body {
+    font-size: 1.4rem;
+  }
 }

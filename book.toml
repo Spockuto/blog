@@ -7,7 +7,7 @@ title = "log_coffee!"
 [output.html]
 default-theme = "ayu"
 preferred-dark-theme = "ayu"
-mathjax-support = true
+mathjax-support = false
 no-section-label = true
 additional-css = ["custom.css"]
 git-repository-url = "https://github.com/Spockuto/blog"

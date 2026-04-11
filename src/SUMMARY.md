@@ -1,6 +1,9 @@
 # log_coffee!
 
 - [log_coffee!](./index.md)
+    + [Strong First or Weak First?](./log_coffee/chapter_6.md)
+    + [Reading ZIPs Without Downloading Them](./log_coffee/chapter_5.md)
+    + [It's Not Lupus — Diagnosing with House MD Data](./log_coffee/chapter_4.md)
     + [The Rust Strawberry test](./log_coffee/chapter_3.md)
     + [Sweet Jesus, Pooh! That's Not Honey! - You're Eating Recursion!](./log_coffee/chapter_2.md) ]
     + [Why u so mean?](./log_coffee/chapter_1.md)
