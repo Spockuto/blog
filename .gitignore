@@ -1,2 +1,4 @@
 book
 build
+node_modules/
+.wrangler/

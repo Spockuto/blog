@@ -1,0 +1,13 @@
+{
+  "name": "log-coffee",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "mdbook build",
+    "preview": "wrangler pages dev book",
+    "deploy": "mdbook build && wrangler pages deploy book --project-name=log-coffee"
+  },
+  "devDependencies": {
+    "wrangler": "^4"
+  }
+}
