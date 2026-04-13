@@ -100,6 +100,18 @@ The \\(I^2\\) cross-bug term vanishes. The penalty depends only on \\(V\\) (with
 
 The shared model has the \\(I^2\\) term &mdash; cross-bug context accumulation. The fresh model eliminates it entirely. In practice, most well-designed agents reset context between bugs, making the fresh model more realistic.
 
+## Prompt Caching
+
+Most providers offer prompt caching: repeated input prefixes are charged at a discount \\(\alpha\\) (typically 0.1, i.e. 90% off). Each fix attempt after the first reuses the previous input as a cached prefix, paying full price only on the new \\(\Delta\\) tokens.
+
+The total input cost splits into new tokens (full price) and cached tokens (discounted):
+
+\\[\text{new: } c^{in}(L_1 + (T-1)\Delta) \qquad \text{cached: } \alpha\\, c^{in}\left[(T-1)L_1 + \Delta\\,\frac{(T-1)(T-2)}{2}\right]\\]
+
+The quadratic growth term is now multiplied by \\(\alpha\\) instead of 1. With \\(\alpha = 0.1\\), the context penalty drops by ~90%.
+
+<mark>Caching benefits Strategy B more</mark> (it had the larger penalty). But caching only works within the same model &mdash; the generation-to-fix handoff always breaks the cache, so the first fix attempt pays full price on \\(L_1\\).
+
 ## Insights
 
 <mark>Strategy B gets hit twice:</mark>
@@ -123,5 +135,5 @@ Meanwhile, Strategy A's penalty is multiplied by the *cheap* \\(c_w^{in}\\). Eve
 
 - **Constant \\(\Delta\\):** Every attempt adds the same tokens. In practice, error traces vary and later attempts may produce longer outputs.
 - **No regressions:** Fixing a bug never introduces a new one. Real agents have regression rates that would add a branching factor.
-- **No caching:** Prompt caching (which discounts repeated input prefixes) would reduce the context penalty. Switching models breaks the cache.
+- **Fixed cache rate:** The model uses a single \\(\alpha = 0.1\\) discount. Real caching has a TTL (e.g. 5 minutes) and the discount may vary by provider.
 - **Uniform bug difficulty:** Bugs are either easy or hard. A continuous difficulty distribution would be more realistic but doesn't change the qualitative result.
